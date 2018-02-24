@@ -1,0 +1,72 @@
+﻿  Disassembly.cpp
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(2): warning C4081: previsto ')'. Trovato 'newline'.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(170): warning C4267: '+=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(159): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: vedere la dichiarazione di 'fopen'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(180): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1316): note: vedere la dichiarazione di 'itoa'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(133): warning C4267: '+=': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(153): warning C4267: 'inizializzazione': conversione da 'size_t' a 'int'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(122): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: vedere la dichiarazione di 'fopen'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(144): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1316): note: vedere la dichiarazione di 'itoa'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(165): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Protection.h(486): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(115): warning C4311: 'cast di tipo': troncamento puntatore da 'LPVOID' a 'unsigned long'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(115): warning C4302: 'cast di tipo': troncamento da 'LPVOID' a 'unsigned long'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(115): warning C4312: 'cast di tipo': conversione da 'unsigned long' a 'PIMAGE_NT_HEADERS', di dimensioni maggiori
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(186): warning C4244: 'inizializzazione': conversione da 'ULONGLONG' a 'DWORD'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(187): warning C4244: 'inizializzazione': conversione da 'ULONGLONG' a 'DWORD'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(136): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(140): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(149): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(90): note: vedere la dichiarazione di 'strcat'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(150): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(151): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(153): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(154): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(155): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(156): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(157): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(158): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(159): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(104): warning C4101: 'header': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(135): warning C4101: 'hg': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(105): warning C4101: 'opHeader': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(100): warning C4101: 'hMapObject': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(489): warning C4311: 'cast di tipo': troncamento puntatore da 'LPVOID' a 'unsigned long'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(489): warning C4302: 'cast di tipo': troncamento da 'LPVOID' a 'unsigned long'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(489): warning C4312: 'cast di tipo': conversione da 'unsigned long' a 'PIMAGE_NT_HEADERS', di dimensioni maggiori
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(490): warning C4311: 'cast di tipo': troncamento puntatore da 'PIMAGE_NT_HEADERS' a 'DWORD'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(490): warning C4302: 'cast di tipo': troncamento da 'PIMAGE_NT_HEADERS' a 'DWORD'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(532): warning C4311: 'cast di tipo': troncamento puntatore da 'PIMAGE_SECTION_HEADER' a 'DWORD'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(532): warning C4302: 'cast di tipo': troncamento da 'PIMAGE_SECTION_HEADER' a 'DWORD'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(587): warning C4244: 'inizializzazione': conversione da 'ULONGLONG' a 'DWORD'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(607): warning C4552: '!=': l'operatore non ha effetto. Previsto operatore con effetto collaterale.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(656): warning C4244: 'inizializzazione': conversione da 'ULONGLONG' a 'DWORD'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(533): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(90): note: vedere la dichiarazione di 'strcat'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(616): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(474): warning C4101: 'header': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(491): warning C4101: 'lpBinaryType': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(475): warning C4101: 'opHeader': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(470): warning C4101: 'hMapObject': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(878): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(924): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+..\..\..\..\Simone's documents\Simone's softwares\KirbiDSM\KirbiDSM\Disassembly.cpp(6): warning C4829: Parametri probabilmente errati nella funzione main. Si consiglia di utilizzare 'int main(array<System::String^>^ argv)'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\memory map.h(140): warning C4700: utilizzata variabile locale 'pSecHeader' non inizializzata
+LINK : fatal error LNK1561: il punto d'ingresso deve essere definito

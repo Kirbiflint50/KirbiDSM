@@ -1,0 +1,290 @@
+﻿  Disassembly.cpp
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(2): warning C4081: previsto ')'. Trovato 'newline'.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(184): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(223): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vedere la dichiarazione di 'sscanf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(290): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: vedere la dichiarazione di 'fopen'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(311): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1316): note: vedere la dichiarazione di 'itoa'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(158): warning C4101: 'pSecHeader': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(156): warning C4101: 'header': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(157): warning C4101: 'opHeader': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Hex.h(152): warning C4101: 'hMapObject': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(122): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: vedere la dichiarazione di 'fopen'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(144): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1316): note: vedere la dichiarazione di 'itoa'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(165): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Protection.h(486): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(202): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(206): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(207): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(210): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\time.h(505): note: vedere la dichiarazione di 'localtime'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(212): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(220): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(221): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(222): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(223): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(224): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(225): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(226): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(227): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(228): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(229): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(230): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(231): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(232): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(233): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(234): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(235): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(236): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(246): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(247): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(248): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(249): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(250): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(251): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(252): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(253): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(254): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(274): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(90): note: vedere la dichiarazione di 'strcat'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(275): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(276): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(278): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(279): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(280): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(281): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(282): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(283): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(284): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(285): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(286): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(322): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(323): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(324): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(325): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(326): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(327): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(333): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(334): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(335): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(336): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(337): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(338): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(339): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(340): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(132): warning C4101: 'header': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(133): warning C4101: 'opHeader': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(128): warning C4101: 'hMapObject': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\AddressConverter.h(283): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\AddressConverter.h(403): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(2254): note: vedere la dichiarazione di 'sscanf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\AddressConverter.h(599): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\AddressConverter.h(656): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(681): warning C4552: '!=': l'operatore non ha effetto. Previsto operatore con effetto collaterale.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(607): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(90): note: vedere la dichiarazione di 'strcat'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(690): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(547): warning C4101: 'header': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(564): warning C4101: 'lpBinaryType': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(548): warning C4101: 'opHeader': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(543): warning C4101: 'hMapObject': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(967): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Disassembly.h(1014): warning C4244: 'argomento': conversione da 'int' a 'float'. Possibile perdita di dati.
+..\..\..\..\Simone's documents\Simone's softwares\KirbiDSM\KirbiDSM\Disassembly.cpp(6): warning C4829: Parametri probabilmente errati nella funzione main. Si consiglia di utilizzare 'int main(array<System::String^>^ argv)'
+  Memory map.cpp
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(122): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(205): note: vedere la dichiarazione di 'fopen'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(144): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _itoa. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdlib.h(1316): note: vedere la dichiarazione di 'itoa'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\TextStrings.h(165): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(202): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(206): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(207): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(210): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\time.h(505): note: vedere la dichiarazione di 'localtime'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(212): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(220): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(221): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(222): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(223): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(224): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(225): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(226): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(227): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(228): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(229): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(230): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(231): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(232): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(233): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(234): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(235): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(236): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(246): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(247): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(248): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(249): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(250): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(251): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(252): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(253): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(254): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(274): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\string.h(90): note: vedere la dichiarazione di 'strcat'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(275): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(276): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(278): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(279): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(280): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(281): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(282): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(283): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(284): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(285): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(286): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(322): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(323): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(324): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(325): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(326): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(327): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(333): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(334): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(335): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(336): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(337): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(338): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(339): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(340): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.10240.0\ucrt\stdio.h(1769): note: vedere la dichiarazione di 'sprintf'
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(132): warning C4101: 'header': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(133): warning C4101: 'opHeader': variabile locale senza riferimenti
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\Memory map.h(128): warning C4101: 'hMapObject': variabile locale senza riferimenti
+  Generazione del codice in corso...
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\memory map.h(206): warning C4700: utilizzata variabile locale 'pSecHeader' non inizializzata
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\addressconverter.h(289): warning C4715: 'KirbiDSM::AddressConverter::TextToHex': non tutti i percorsi di controllo restituiscono un valore
+f:\simone\simone's documents\simone's softwares\kirbidsm\kirbidsm\memory map.h(206): warning C4700: utilizzata variabile locale 'pSecHeader' non inizializzata
+LINK : warning LNK4098: la libreria predefinita 'MSVCRTD' Þ in conflitto con l'utilizzo di altre librerie; utilizzare /NODEFAULTLIB:libreria
+LINK : warning LNK4098: la libreria predefinita 'ucrtd.lib' Þ in conflitto con l'utilizzo di altre librerie; utilizzare /NODEFAULTLIB:libreria
+  KirbiDSM.vcxproj -> F:\SIMONE\Simone's documents\Simone's softwares\KirbiDSM\Debug\KirbiDSM.exe
+  KirbiDSM.vcxproj -> F:\SIMONE\Simone's documents\Simone's softwares\KirbiDSM\Debug\KirbiDSM.pdb (Full PDB)

@@ -1,0 +1,69 @@
+  KirbiDSM.AddressConverter.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.Disassembly.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.Hex.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.Memory map.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.Protection.resources - Embedded, ContainedInManifestFile, 
+ImageRuntimeVersion: v4.0.30319
+Assembly KirbiDSM, Version=0.0.*, Culture=Lingua inglese (non associata ad alcun paese): 
+	hash=SHA1, flags=PublicKey
+Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a: 
+	hash=None, flags=None
+Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
+	hash=None, flags=None
+Class KirbiDSM.AddressConverter: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String filedir : Public
+    System.String asmcode : Public
+    UInt32 imagebase IsLong : Public
+    System.Windows.Forms.TextBox textBox1 : Public
+Class KirbiDSM.Hex: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String filename : Public
+    System.String Hexa : Public
+    Int32 fnts : Public
+    System.Windows.Forms.RichTextBox richTextBox1 : Public
+Class KirbiDSM.TextStrings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String filenm : Public
+Class KirbiDSM.Protection: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 fnst : Public
+    System.String dataprotection : Public
+Class KirbiDSM.Memorymap: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String sects : Public
+    Int32 numlin : Public
+    System.String myfile : Public
+Class KirbiDSM.Disassembly: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 f : Public
+    Int32 result : Public
+    System.String thesections : Public
+    Int32 fonts : Public
+    Int32 lblfont : Public
+    System.String codedsm : Public
+    UInt32 imgbase IsLong : Public
+    System.Windows.Forms.TextBox textBox1 : Public
+    System.Windows.Forms.Label label2 : Public
+    System.String flnm : Public
+    System.Windows.Forms.RichTextBox richTextBox1 : Public
