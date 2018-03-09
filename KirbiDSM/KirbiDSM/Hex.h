@@ -12,7 +12,29 @@
 #include <regex>
 //#include "stdafx.h"
 #include <string>
+#include <fstream>
+#include <cstdio>
+#include <memory>
+#include <sstream> 
 ////#include "Settings.h"
+#define HEX_OFFSET    1
+#define ASCII_OFFSET 51
+#define NUM_CHARS    16
+
+
+void   hexdump(char* prog_name, char * filename);
+
+/* Clear the display line.  */
+void   clear_line(char *line, int size);
+
+/* Put a character (in hex format
+* into the display line. */
+char * hex(char *position, int c);
+
+/* Put a character (in ASCII format
+* into the display line. */
+char * ascii(char *position, int c);
+
 namespace KirbiDSM {
 
 	using namespace System;
@@ -143,7 +165,118 @@ namespace KirbiDSM {
 	private: System::Void Hex_Load(System::Object^  sender, System::EventArgs^  e) {
 
 
+		String^ dascrivere2 = "BackColor default;";
+		String^ dascrivere3 = "Font default;";
+		String^ dascrivere4 = "UpperCase NO;";
+		String^ dascrivere5 = "FontColor default;";
+		String^ data;
+		System::IO::StreamReader^ readsettings = gcnew System::IO::StreamReader("Settings.ini");
 
+		while (data = readsettings->ReadLine())
+		{
+
+
+			if (data->Contains(dascrivere2))
+			{
+
+				////richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
+				richTextBox1->BackColor = Color::Blue;
+
+				//richTextBox1->ForeColor = System::Drawing::Color::Red;
+				/*textBox1->ForeColor = System::Drawing::Color::Black;
+				label2->ForeColor = System::Drawing::Color::Black;
+				label1->ForeColor = System::Drawing::Color::Black;*/
+
+				//break;
+
+
+			}
+			//mine:
+			if (data->Contains(dascrivere3))
+			{
+
+				richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
+
+			}
+			if (data->Contains(dascrivere4))
+			{
+
+
+				richTextBox1->Text = richTextBox1->Text->ToLower();
+
+
+			}
+			if (data->Contains(dascrivere5))
+			{
+				richTextBox1->ForeColor = System::Drawing::Color::Red;
+				
+
+			}
+			if (data->Contains("BackColor red;"))
+			{
+				richTextBox1->BackColor = Color::Red;
+				
+
+			}
+			if (data->Contains("BackColor blue;"))
+			{
+				richTextBox1->BackColor = Color::Blue;
+				
+
+			}
+			if (data->Contains("BackColor white;"))
+			{
+				richTextBox1->BackColor = Color::White;
+				
+			}
+			if (data->Contains("BackColor black;"))
+			{
+				richTextBox1->BackColor = Color::Black;
+				
+
+			}
+			if (data->Contains("Font medium;"))
+			{
+				richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 12);
+				
+
+			}
+			if (data->Contains("Font big;"))
+			{
+
+				richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 15);
+			
+			}
+			if (data->Contains("FontColor blue;"))
+			{
+
+				richTextBox1->ForeColor = System::Drawing::Color::Blue;
+				
+
+			}
+			if (data->Contains("FontColor red;"))
+			{
+				richTextBox1->ForeColor = System::Drawing::Color::Red;
+			
+			}
+			if (data->Contains("FontColor green;"))
+			{
+				richTextBox1->ForeColor = System::Drawing::Color::Green;
+				
+			}
+			if (data->Contains("FontColor yellow;"))
+			{
+				richTextBox1->ForeColor = System::Drawing::Color::Yellow;
+				
+			}
+			
+
+
+		}
+		readsettings->Close();
+			
+
+		
 
 
 
@@ -269,10 +402,52 @@ namespace KirbiDSM {
 
 			
 			
-		
+		std::stringstream hx;
 		
 			msclr::interop::marshal_context context;
 			std::string file = context.marshal_as<std::string>(filename);
+			int c = ' ';                    /* Character read from the file */
+
+			char * hex_offset;     /* Position of the next character
+								   * in Hex     */
+
+			char * ascii_offset;      /* Position of the next character
+									  * in ASCII.      */
+
+			FILE *ptr;                       /* Pointer to the file.   */
+
+			char line[81];        /* O/P line.      */
+
+								  /* Open the file    */
+			ptr = fopen(file.c_str(), "r");
+			
+			char arrayshex[1024] = { 0 };
+			
+
+			while (c != EOF)
+			{
+				clear_line(line, sizeof line);
+				hex_offset = line + HEX_OFFSET;
+				ascii_offset = line + ASCII_OFFSET;
+
+				while (ascii_offset < line + ASCII_OFFSET + NUM_CHARS
+					&& (c = fgetc(ptr)) != EOF)
+				{
+					/* Build the hex part of
+					* the line.      */
+					hex_offset = hex(hex_offset, c);
+
+					/* Build the Ascii part of
+					* the line.      */
+					ascii_offset = ascii(ascii_offset, c);
+
+				}
+				//sprintf(arrayshex, "%s\n", line);
+				hx << line << std::endl;
+			}
+			std::string dd = hx.str();
+			String^ gethx = gcnew String(dd.c_str());
+			richTextBox1->AppendText(gethx + "\n");
 
 		///	HexDump((char *)((DWORD)dosHeader + pSecHeader->PointerToRawData), pSecHeader->SizeOfRawData, opHeader.ImageBase + pSecHeader->VirtualAddress);
 			///FILE *fileptr;
@@ -287,38 +462,7 @@ namespace KirbiDSM {
 			//String^ MyString = gcnew String(file.c_str());
 			///richTextBox1->Text = MyString;
 			//fatto
-			FILE* f = fopen(file.c_str(), "rb"); ///perchè crasha? praticamente devo ricavarmi l'hex dump dell'exe
-			fseek(f, 0, SEEK_END);
-			long lsize = 0;
-
-			lsize = ftell(f);
-			rewind(f);
-			char*lll = new char[lsize];
-			int quantoletto = 0;
-
-			while (quantoletto < lsize)
-			{
-				quantoletto += fread(lll, 1, lsize - quantoletto, f);
-			}
-			fclose(f);
-
-			int hex = 0;
-			char *hexChar = new char[lsize];
-			//non c'e l'ha fa tutto il file
-			for (int x = 0; x < 1000; x++)
-			{
-				hex = lll[x];
-				itoa(hex, hexChar, 16);
-
-				System::String ^checksumstr = gcnew String(hexChar);
-
-				Environment::NewLine;
-				///checksumstr->ToUpper();
-				richTextBox1->AppendText(checksumstr->ToUpper()); //////checksumstr->ToUpper() + " ";// +=
-
-				
-
-			}
+			
 
 			/*for each(String^ line in richTextBox1->Lines)
 			{
@@ -561,6 +705,37 @@ namespace KirbiDSM {
 		
 
 			/////return 0;
+	}
+	void clear_line(char *line, int size)
+	{
+		int count;
+
+		for (count = 0; count < size; line[count] = ' ', count++);
+	}
+
+	char * ascii(char *position, int c)
+	{
+		/* If the character is NOT printable
+		* replace it with a '.'  */
+		if (!isprint(c)) c = '.';
+
+		sprintf(position, "%c", c);    /* Put the character to the line
+									   * so it can be displayed later */
+
+									   /* Return the position of the next
+									   * ASCII character.   */
+		return(++position);
+	}
+
+	char * hex(char *position, int c)
+	{
+		int offset = 3;
+
+		sprintf(position, "%02X ", (unsigned char)c);
+
+		*(position + offset) = ' ';   /* Remove the '/0' created by 'sprint'  */
+
+		return (position + offset);
 	}
 			
 	private: System::Void richTextBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {

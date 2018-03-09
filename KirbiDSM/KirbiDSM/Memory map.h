@@ -9,6 +9,10 @@
 //#include "include\capstone.h"
 #include "TextStrings.h"
 #include <iostream> 
+#include <pe_factory.h>
+#include <memory>
+#include <sstream> 
+#include <fstream>
 namespace KirbiDSM {
 
 	using namespace System;
@@ -64,7 +68,6 @@ namespace KirbiDSM {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Memorymap::typeid));
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->SuspendLayout();
 			// 
@@ -73,9 +76,9 @@ namespace KirbiDSM {
 			this->richTextBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->richTextBox1->Location = System::Drawing::Point(2, 45);
+			this->richTextBox1->Location = System::Drawing::Point(2, 2);
 			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(382, 219);
+			this->richTextBox1->Size = System::Drawing::Size(382, 262);
 			this->richTextBox1->TabIndex = 0;
 			this->richTextBox1->Text = L"";
 			this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &Memorymap::richTextBox1_TextChanged);
@@ -86,8 +89,6 @@ namespace KirbiDSM {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(388, 264);
 			this->Controls->Add(this->richTextBox1);
-			///this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			///this->Icon = global::AEM.UI.Properties.Resources.your_icon_name;
 			this->Name = L"Memorymap";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Memorymap";
@@ -98,7 +99,115 @@ namespace KirbiDSM {
 #pragma endregion
 	private: System::Void Memorymap_Load(System::Object^  sender, System::EventArgs^  e) {
 
+		String^ dascrivere2 = "BackColor default;";
+		String^ dascrivere3 = "Font default;";
+		String^ dascrivere4 = "UpperCase NO;";
+		String^ dascrivere5 = "FontColor default;";
+		String^ data;
+		System::IO::StreamReader^ readsettings = gcnew System::IO::StreamReader("Settings.ini");
 
+		while (data = readsettings->ReadLine())
+		{
+
+
+			if (data->Contains(dascrivere2))
+			{
+
+				////richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
+				richTextBox1->BackColor = Color::Blue;
+
+				//richTextBox1->ForeColor = System::Drawing::Color::Red;
+				/*textBox1->ForeColor = System::Drawing::Color::Black;
+				label2->ForeColor = System::Drawing::Color::Black;
+				label1->ForeColor = System::Drawing::Color::Black;*/
+
+				//break;
+
+
+			}
+			//mine:
+			if (data->Contains(dascrivere3))
+			{
+
+				richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
+
+			}
+			if (data->Contains(dascrivere4))
+			{
+
+
+				richTextBox1->Text = richTextBox1->Text->ToLower();
+
+
+			}
+			if (data->Contains(dascrivere5))
+			{
+				richTextBox1->ForeColor = System::Drawing::Color::Red;
+
+
+			}
+			if (data->Contains("BackColor red;"))
+			{
+				richTextBox1->BackColor = Color::Red;
+
+
+			}
+			if (data->Contains("BackColor blue;"))
+			{
+				richTextBox1->BackColor = Color::Blue;
+
+
+			}
+			if (data->Contains("BackColor white;"))
+			{
+				richTextBox1->BackColor = Color::White;
+
+			}
+			if (data->Contains("BackColor black;"))
+			{
+				richTextBox1->BackColor = Color::Black;
+
+
+			}
+			if (data->Contains("Font medium;"))
+			{
+				richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 12);
+
+
+			}
+			if (data->Contains("Font big;"))
+			{
+
+				richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 15);
+
+			}
+			if (data->Contains("FontColor blue;"))
+			{
+
+				richTextBox1->ForeColor = System::Drawing::Color::Blue;
+
+
+			}
+			if (data->Contains("FontColor red;"))
+			{
+				richTextBox1->ForeColor = System::Drawing::Color::Red;
+
+			}
+			if (data->Contains("FontColor green;"))
+			{
+				richTextBox1->ForeColor = System::Drawing::Color::Green;
+
+			}
+			if (data->Contains("FontColor yellow;"))
+			{
+				richTextBox1->ForeColor = System::Drawing::Color::Yellow;
+
+			}
+
+
+
+		}
+		readsettings->Close();
 		/*int check;
 		int file;*/
 		String^ path = "Resources/Myicon.ico";
@@ -210,9 +319,7 @@ namespace KirbiDSM {
 			tm* Time = localtime(&creationTime);
 			strftime(s, sizeof(s), "%a %Y-%m-%d %H:%M:%S %Z", Time);
 			sprintf(a, "%s", s);
-
-
-
+			
 
 
 			if (dosHeader->e_magic == IMAGE_DOS_SIGNATURE) {
@@ -259,7 +366,7 @@ namespace KirbiDSM {
 
 
 
-
+///			std::stringstream test;
 
 
 
@@ -272,6 +379,7 @@ namespace KirbiDSM {
 				DWORD vaoepva = (pSecHeader->VirtualAddress) + (pSecHeader->PointerToRawData) - (pSecHeader->VirtualAddress);
 				DWORD RVARAWADD = (pSecHeader->VirtualAddress);
 				strcat(sec, (char*)pSecHeader->Name);
+				///test << pSecHeader->Name << std::endl;
 				sprintf(virsize, "\n%-36s%#x", "Size of code or data:", pSecHeader->Misc.VirtualSize);
 				sprintf(viraddress, "\n%-36s%#x", "(RVA)Virtual Address :", pSecHeader->VirtualAddress);
 				//////printf("\n%-36s%#x", "Virtual Address(RVA) :", pSecHeader->VirtualAddress);
@@ -338,6 +446,10 @@ namespace KirbiDSM {
 			sprintf(sctallignment, "\n%-36s%#x", "Section Alignment :", ntHeader->OptionalHeader.SectionAlignment);
 			sprintf(major, "\n%-36s%d", "Major Linker Version : ", ntHeader->OptionalHeader.MajorLinkerVersion);
 			sprintf(minor, "\n%-36s%d", "Minor Linker Version : ", ntHeader->OptionalHeader.MinorLinkerVersion);
+			///std::string thetile = title.str();
+		//	std::string debaginfos = debuginfos.str();
+		////	System::String^ gettitledebuginfo = gcnew String(thetile.c_str());
+		//	System::String^ sysdebug = gcnew String(debaginfos.c_str());
 			///sprintf(timedatestamp, "\n%-36s%s", "Time Stamp :", ntHeader->FileHeader.TimeDateStamp);
 			System::String ^othenomi = gcnew String(sec);
 			System::String ^execusection = gcnew String(bhj);
@@ -527,6 +639,11 @@ namespace KirbiDSM {
 			richTextBox1->Text += numberofreloc;
 			richTextBox1->Text += Environment::NewLine;
 			richTextBox1->Text += numberofline;
+			richTextBox1->Text += Environment::NewLine;
+			//richTextBox1->Text += Environment::NewLine;
+			///richTextBox1->Text += "                                 " + gettitledebuginfo + "      ";
+			////richTextBox1->Text += Environment::NewLine;
+			///richTextBox1->Text += sysdebug;
 
 			//			richTextBox1->Text += Environment::NewLine;
 

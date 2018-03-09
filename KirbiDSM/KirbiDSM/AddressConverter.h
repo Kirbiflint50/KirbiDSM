@@ -259,6 +259,7 @@ namespace KirbiDSM {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->MaximizeBox = false;
 			this->MaximumSize = System::Drawing::Size(440, 339);
 			this->MinimumSize = System::Drawing::Size(440, 339);
 			this->Name = L"AddressConverter";

@@ -1,8 +1,16 @@
   KirbiDSM.AddressConverter.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.AddSection.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.Disassembly.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.Exports.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.Hex.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.HexSecond.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.ImportsEditor.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.ImportsTable.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.Memory map.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.Protection.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.RelocationsEditor.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.RelocationsViewer.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.SectionsEditor.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly KirbiDSM, Version=0.0.*, Culture=Lingua inglese (non associata ad alcun paese): 
 	hash=SHA1, flags=PublicKey
@@ -26,6 +34,12 @@ Class KirbiDSM.AddressConverter: AutoLayout, AnsiClass, Class, Public, BeforeFie
     System.String asmcode : Public
     UInt32 imagebase IsLong : Public
     System.Windows.Forms.TextBox textBox1 : Public
+Class KirbiDSM.AddSection: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String file : Public
+    Boolean readble : Public
 Class KirbiDSM.Hex: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -52,6 +66,44 @@ Class KirbiDSM.Memorymap: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.String sects : Public
     Int32 numlin : Public
     System.String myfile : Public
+Class KirbiDSM.ImportsTable: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String fileimports : Public
+Class KirbiDSM.Exports: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String file : Public
+Class KirbiDSM.SectionsEditor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String filenmmi : Public
+Class KirbiDSM.RelocationsViewer: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String myfile : Public
+Class KirbiDSM.ImportsEditor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String target : Public
+    Boolean readble : Public
+    Boolean writeble : Public
+Class KirbiDSM.RelocationsEditor: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String dirfile : Public
+    Boolean readble : Public
+Class KirbiDSM.HexSecond: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String thenamfile : Public
 Class KirbiDSM.Disassembly: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -59,11 +111,21 @@ Class KirbiDSM.Disassembly: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     Int32 f : Public
     Int32 result : Public
     System.String thesections : Public
-    Int32 fonts : Public
+    System.String flnm : Public
+    Int32 fontsize : Public
+    Int32 backcolor : Public
+    Int32 fontcolor : Public
+    Int32 upper : Public
     Int32 lblfont : Public
+    Int32 pedonecode : Public
+    Int32 infoupper : Public
     System.String codedsm : Public
+    System.String anassembi : Public
     UInt32 imgbase IsLong : Public
+    UInt32 addressofentrypoint IsLong : Public
+    UInt32 offsetaddress IsLong : Public
+    UInt32 endsection IsLong : Public
+    Void* base : Public
     System.Windows.Forms.TextBox textBox1 : Public
     System.Windows.Forms.Label label2 : Public
-    System.String flnm : Public
     System.Windows.Forms.RichTextBox richTextBox1 : Public

@@ -30,6 +30,45 @@
     <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddressConverter.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsTable.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_32_64.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_base.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_exception.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_factory.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_resource_manager.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Exports.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\SectionsEditor.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddSection.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsViewer.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsEditor.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsEditor.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Disassembly.h">
@@ -47,6 +86,30 @@
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddressConverter.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsTable.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Exports.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\SectionsEditor.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddSection.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsViewer.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsEditor.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsEditor.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Disassembly.resx">
@@ -59,6 +122,33 @@
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Memory map.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddressConverter.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsTable.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddSection.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Exports.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\SectionsEditor.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsEditor.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsViewer.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsEditor.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
   </ItemGroup>

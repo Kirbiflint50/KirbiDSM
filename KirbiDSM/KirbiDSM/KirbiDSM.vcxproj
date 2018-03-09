@@ -89,6 +89,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\SIMONE\Simone's documents\Simone's softwares\KirbiDSM\KirbiDSM\pe_lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -96,6 +97,7 @@
       <NoEntryPoint>false</NoEntryPoint>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <TargetMachine>MachineX86</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -107,6 +109,8 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,19 +142,47 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddressConverter.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddSection.cpp" />
     <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Disassembly.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Exports.cpp" />
     <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Hex.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsEditor.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsTable.cpp" />
     <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Memory map.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_32_64.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_base.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_exception.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_factory.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\pe_lib\pe_resource_manager.cpp" />
     <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Protection.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsEditor.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsViewer.cpp" />
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\SectionsEditor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddressConverter.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddSection.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Disassembly.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Exports.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Hex.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsEditor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsTable.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Memory map.h">
@@ -159,22 +191,55 @@
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Protection.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsEditor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsViewer.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\SectionsEditor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddressConverter.resx">
       <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddressConverter.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddSection.resx">
+      <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\AddSection.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Disassembly.resx">
       <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Disassembly.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Exports.resx">
+      <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Exports.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Hex.resx">
       <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Hex.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.resx">
+      <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsEditor.resx">
+      <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsEditor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsTable.resx">
+      <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\ImportsTable.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Memory map.resx">
       <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Memory map.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Protection.resx">
       <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Protection.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsEditor.resx">
+      <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsEditor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsViewer.resx">
+      <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\RelocationsViewer.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\SectionsEditor.resx">
+      <DependentUpon>..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\SectionsEditor.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
