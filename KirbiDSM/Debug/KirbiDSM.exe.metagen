@@ -4,13 +4,16 @@
   KirbiDSM.Exports.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.Hex.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.HexSecond.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.HexThird.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.ImportsEditor.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.ImportsTable.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.LogAnalysis.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.Memory map.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.Protection.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.RelocationsEditor.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.RelocationsViewer.resources - Embedded, ContainedInManifestFile, 
   KirbiDSM.SectionsEditor.resources - Embedded, ContainedInManifestFile, 
+  KirbiDSM.Strings.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly KirbiDSM, Version=0.0.*, Culture=Lingua inglese (non associata ad alcun paese): 
 	hash=SHA1, flags=PublicKey
@@ -46,7 +49,6 @@ Class KirbiDSM.Hex: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   Fields:
     System.String filename : Public
     System.String Hexa : Public
-    Int32 fnts : Public
     System.Windows.Forms.RichTextBox richTextBox1 : Public
 Class KirbiDSM.TextStrings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
@@ -104,6 +106,22 @@ Class KirbiDSM.HexSecond: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     System.String thenamfile : Public
+Class KirbiDSM.HexThird: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String thefilename : Public
+    System.Windows.Forms.RichTextBox richTextBox1 : Public
+Class KirbiDSM.LogAnalysis: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String towrite : Public
+Class KirbiDSM.Strings: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String targetstrfile : Public
 Class KirbiDSM.Disassembly: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -126,6 +144,7 @@ Class KirbiDSM.Disassembly: AutoLayout, AnsiClass, Class, Public, BeforeFieldIni
     UInt32 offsetaddress IsLong : Public
     UInt32 endsection IsLong : Public
     Void* base : Public
+    System.String outputinfos : Public
     System.Windows.Forms.TextBox textBox1 : Public
     System.Windows.Forms.Label label2 : Public
     System.Windows.Forms.RichTextBox richTextBox1 : Public

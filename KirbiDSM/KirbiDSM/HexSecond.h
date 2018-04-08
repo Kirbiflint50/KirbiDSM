@@ -88,6 +88,7 @@ namespace KirbiDSM {
 			this->richTextBox1->Size = System::Drawing::Size(400, 215);
 			this->richTextBox1->TabIndex = 0;
 			this->richTextBox1->Text = L"";
+			this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &HexSecond::richTextBox1_TextChanged);
 			// 
 			// textBox1
 			// 
@@ -154,7 +155,7 @@ namespace KirbiDSM {
 			{
 
 				////richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
-				richTextBox1->BackColor = Color::Blue;
+				richTextBox1->BackColor = Color::White;
 
 				//richTextBox1->ForeColor = System::Drawing::Color::Red;
 				/*textBox1->ForeColor = System::Drawing::Color::Black;
@@ -182,7 +183,7 @@ namespace KirbiDSM {
 			}
 			if (data->Contains(dascrivere5))
 			{
-				richTextBox1->ForeColor = System::Drawing::Color::Red;
+				richTextBox1->ForeColor = System::Drawing::Color::Black;
 
 
 			}
@@ -453,5 +454,10 @@ namespace KirbiDSM {
 		}
 
 	}
+private: System::Void richTextBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	richTextBox1->SelectionStart = 0;
+	richTextBox1->ScrollToCaret();
+}
 };
 }

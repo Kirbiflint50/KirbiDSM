@@ -69,6 +69,15 @@
     <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexThird.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\LogAnalysis.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Strings.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Disassembly.h">
@@ -110,6 +119,15 @@
     <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexThird.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\LogAnalysis.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Strings.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Disassembly.resx">
@@ -149,6 +167,15 @@
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexSecond.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\HexThird.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\LogAnalysis.resx">
+      <Filter>File di risorse</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Simone%27s documents\Simone%27s softwares\KirbiDSM\KirbiDSM\Strings.resx">
       <Filter>File di risorse</Filter>
     </EmbeddedResource>
   </ItemGroup>

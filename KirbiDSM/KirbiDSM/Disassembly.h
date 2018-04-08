@@ -30,9 +30,12 @@
 #include <array>
 #include "HexSecond.h"
 #include <pe_factory.h> 
+#include "HexThird.h"
+#include "LogAnalysis.h"
+#include "Strings.h"
 //#include "distorm.h"
 ///#include <distorm.h>
-///#include "udis86.h"
+//#include "udis86.h"
 //#include "Distorm/distorm.h"
 ///#include "udis86.h"
 
@@ -52,7 +55,18 @@
 ////#define MAX_INSTRUCTIONS (1000)
 
 ///#include <stdio.h>
+void   hexdump(char* prog_name, char * filename);
 
+/* Clear the display line.  */
+void   clear_line(char *line, int size);
+
+/* Put a character (in hex format
+* into the display line. */
+char * hex(char *position, int c);
+
+/* Put a character (in ASCII format
+* into the display line. */
+char * ascii(char *position, int c);
 namespace KirbiDSM {
 
 	using namespace System;
@@ -100,6 +114,7 @@ namespace KirbiDSM {
 		DWORD offsetaddress;
 		DWORD endsection;
 		LPVOID base;
+		System::String^ outputinfos = "";
 		/*bool isDrag = false;
 		int lastY = 0;*/
 	private: System::Windows::Forms::Label^  label1;
@@ -161,6 +176,33 @@ namespace KirbiDSM {
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::ToolStripMenuItem^  exitToolStripMenuItem3;
+	private: System::Windows::Forms::ToolStripMenuItem^  dump1ToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  dump2ToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  dump3ToolStripMenuItem;
+	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
+
+
+	private: System::Windows::Forms::ToolStripMenuItem^  copyToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  addressToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  addImagebaseToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  searchToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  stringsToolStripMenuItem;
+
+private: System::Windows::Forms::ToolStripMenuItem^  selectedToolStripMenuItem;
+private: System::Windows::Forms::Button^  button6;
+private: System::Windows::Forms::ToolStripMenuItem^  apparanceToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  highlightingToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  jumpsAndCallsToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  defaultToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  analyzeToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  moduleToolStripMenuItem;
+private: System::Windows::Forms::ToolStripMenuItem^  dump1ToolStripMenuItem2;
+private: System::Windows::Forms::ToolStripMenuItem^  dump1ToolStripMenuItem1;
+private: System::Windows::Forms::ToolStripMenuItem^  dump3ToolStripMenuItem1;
+
+
+
+
 
 
 	private: System::Windows::Forms::ToolStripMenuItem^  aboutToolStripMenuItem1;
@@ -226,12 +268,16 @@ namespace KirbiDSM {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Disassembly::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->openToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->exitToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->dump1ToolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->dump1ToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->dump3ToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->saveMemoryMapToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->saveImportsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->saveExportsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -239,6 +285,9 @@ namespace KirbiDSM {
 			this->exitToolStripMenuItem3 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->viewToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->hexDumpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->dump1ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->dump2ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->dump3ToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->memoryMapToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->protectionAnalyzerToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->addressConverterValuesConverterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -253,6 +302,19 @@ namespace KirbiDSM {
 			this->aboutToolStripMenuItem2 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->creditsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->copyToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->addressToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->addImagebaseToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->selectedToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->searchToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->stringsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->apparanceToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->highlightingToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->jumpsAndCallsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->defaultToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->analyzeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->moduleToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -283,7 +345,9 @@ namespace KirbiDSM {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
+			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -298,6 +362,7 @@ namespace KirbiDSM {
 			this->menuStrip1->Size = System::Drawing::Size(1186, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
+			this->menuStrip1->ItemClicked += gcnew System::Windows::Forms::ToolStripItemClickedEventHandler(this, &Disassembly::menuStrip1_ItemClicked);
 			// 
 			// fileToolStripMenuItem
 			// 
@@ -326,10 +391,35 @@ namespace KirbiDSM {
 			// 
 			// exitToolStripMenuItem1
 			// 
+			this->exitToolStripMenuItem1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->dump1ToolStripMenuItem2,
+					this->dump1ToolStripMenuItem1, this->dump3ToolStripMenuItem1
+			});
 			this->exitToolStripMenuItem1->Name = L"exitToolStripMenuItem1";
 			this->exitToolStripMenuItem1->Size = System::Drawing::Size(173, 22);
 			this->exitToolStripMenuItem1->Text = L"Save Hex Dump";
 			this->exitToolStripMenuItem1->Click += gcnew System::EventHandler(this, &Disassembly::exitToolStripMenuItem1_Click);
+			// 
+			// dump1ToolStripMenuItem2
+			// 
+			this->dump1ToolStripMenuItem2->Name = L"dump1ToolStripMenuItem2";
+			this->dump1ToolStripMenuItem2->Size = System::Drawing::Size(152, 22);
+			this->dump1ToolStripMenuItem2->Text = L"Dump 1";
+			this->dump1ToolStripMenuItem2->Click += gcnew System::EventHandler(this, &Disassembly::dump1ToolStripMenuItem2_Click);
+			// 
+			// dump1ToolStripMenuItem1
+			// 
+			this->dump1ToolStripMenuItem1->Name = L"dump1ToolStripMenuItem1";
+			this->dump1ToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
+			this->dump1ToolStripMenuItem1->Text = L"Dump 2";
+			this->dump1ToolStripMenuItem1->Click += gcnew System::EventHandler(this, &Disassembly::dump1ToolStripMenuItem1_Click);
+			// 
+			// dump3ToolStripMenuItem1
+			// 
+			this->dump3ToolStripMenuItem1->Name = L"dump3ToolStripMenuItem1";
+			this->dump3ToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
+			this->dump3ToolStripMenuItem1->Text = L"Dump 3";
+			this->dump3ToolStripMenuItem1->Click += gcnew System::EventHandler(this, &Disassembly::dump3ToolStripMenuItem1_Click);
 			// 
 			// saveMemoryMapToolStripMenuItem
 			// 
@@ -379,10 +469,35 @@ namespace KirbiDSM {
 			// 
 			// hexDumpToolStripMenuItem
 			// 
+			this->hexDumpToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->dump1ToolStripMenuItem,
+					this->dump2ToolStripMenuItem, this->dump3ToolStripMenuItem
+			});
 			this->hexDumpToolStripMenuItem->Name = L"hexDumpToolStripMenuItem";
 			this->hexDumpToolStripMenuItem->Size = System::Drawing::Size(268, 22);
 			this->hexDumpToolStripMenuItem->Text = L"Hex Dump (View)";
 			this->hexDumpToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::hexDumpToolStripMenuItem_Click);
+			// 
+			// dump1ToolStripMenuItem
+			// 
+			this->dump1ToolStripMenuItem->Name = L"dump1ToolStripMenuItem";
+			this->dump1ToolStripMenuItem->Size = System::Drawing::Size(201, 22);
+			this->dump1ToolStripMenuItem->Text = L"Dump 1 (Not all the file)";
+			this->dump1ToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::dump1ToolStripMenuItem_Click);
+			// 
+			// dump2ToolStripMenuItem
+			// 
+			this->dump2ToolStripMenuItem->Name = L"dump2ToolStripMenuItem";
+			this->dump2ToolStripMenuItem->Size = System::Drawing::Size(201, 22);
+			this->dump2ToolStripMenuItem->Text = L"Dump 2 (Not all the file)";
+			this->dump2ToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::dump2ToolStripMenuItem_Click);
+			// 
+			// dump3ToolStripMenuItem
+			// 
+			this->dump3ToolStripMenuItem->Name = L"dump3ToolStripMenuItem";
+			this->dump3ToolStripMenuItem->Size = System::Drawing::Size(201, 22);
+			this->dump3ToolStripMenuItem->Text = L"Dump 3 (Complete)";
+			this->dump3ToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::dump3ToolStripMenuItem_Click);
 			// 
 			// memoryMapToolStripMenuItem
 			// 
@@ -489,6 +604,7 @@ namespace KirbiDSM {
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->richTextBox1->BackColor = System::Drawing::Color::White;
+			this->richTextBox1->ContextMenuStrip = this->contextMenuStrip1;
 			this->richTextBox1->ForeColor = System::Drawing::Color::Red;
 			this->richTextBox1->Location = System::Drawing::Point(0, 403);
 			this->richTextBox1->Name = L"richTextBox1";
@@ -501,6 +617,106 @@ namespace KirbiDSM {
 			this->richTextBox1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &Disassembly::richTextBox1_MouseDown);
 			this->richTextBox1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &Disassembly::richTextBox1_MouseMove);
 			this->richTextBox1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &Disassembly::richTextBox1_MouseUp);
+			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+				this->copyToolStripMenuItem,
+					this->searchToolStripMenuItem, this->apparanceToolStripMenuItem, this->analyzeToolStripMenuItem
+			});
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(135, 92);
+			this->contextMenuStrip1->Opening += gcnew System::ComponentModel::CancelEventHandler(this, &Disassembly::contextMenuStrip1_Opening);
+			// 
+			// copyToolStripMenuItem
+			// 
+			this->copyToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->addressToolStripMenuItem,
+					this->addImagebaseToolStripMenuItem, this->selectedToolStripMenuItem
+			});
+			this->copyToolStripMenuItem->Name = L"copyToolStripMenuItem";
+			this->copyToolStripMenuItem->Size = System::Drawing::Size(134, 22);
+			this->copyToolStripMenuItem->Text = L"Copy";
+			// 
+			// addressToolStripMenuItem
+			// 
+			this->addressToolStripMenuItem->Name = L"addressToolStripMenuItem";
+			this->addressToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->addressToolStripMenuItem->Text = L"Address";
+			this->addressToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::addressToolStripMenuItem_Click);
+			// 
+			// addImagebaseToolStripMenuItem
+			// 
+			this->addImagebaseToolStripMenuItem->Name = L"addImagebaseToolStripMenuItem";
+			this->addImagebaseToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->addImagebaseToolStripMenuItem->Text = L"Add imagebase ";
+			this->addImagebaseToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::addImagebaseToolStripMenuItem_Click);
+			// 
+			// selectedToolStripMenuItem
+			// 
+			this->selectedToolStripMenuItem->Name = L"selectedToolStripMenuItem";
+			this->selectedToolStripMenuItem->Size = System::Drawing::Size(159, 22);
+			this->selectedToolStripMenuItem->Text = L"Selected ";
+			this->selectedToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::selectedToolStripMenuItem_Click);
+			// 
+			// searchToolStripMenuItem
+			// 
+			this->searchToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->stringsToolStripMenuItem });
+			this->searchToolStripMenuItem->Name = L"searchToolStripMenuItem";
+			this->searchToolStripMenuItem->Size = System::Drawing::Size(134, 22);
+			this->searchToolStripMenuItem->Text = L"Search ";
+			// 
+			// stringsToolStripMenuItem
+			// 
+			this->stringsToolStripMenuItem->Name = L"stringsToolStripMenuItem";
+			this->stringsToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->stringsToolStripMenuItem->Text = L"All Strings";
+			this->stringsToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::stringsToolStripMenuItem_Click);
+			// 
+			// apparanceToolStripMenuItem
+			// 
+			this->apparanceToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->highlightingToolStripMenuItem });
+			this->apparanceToolStripMenuItem->Name = L"apparanceToolStripMenuItem";
+			this->apparanceToolStripMenuItem->Size = System::Drawing::Size(134, 22);
+			this->apparanceToolStripMenuItem->Text = L"Apparance ";
+			// 
+			// highlightingToolStripMenuItem
+			// 
+			this->highlightingToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->jumpsAndCallsToolStripMenuItem,
+					this->defaultToolStripMenuItem
+			});
+			this->highlightingToolStripMenuItem->Name = L"highlightingToolStripMenuItem";
+			this->highlightingToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->highlightingToolStripMenuItem->Text = L"Highlighting";
+			// 
+			// jumpsAndCallsToolStripMenuItem
+			// 
+			this->jumpsAndCallsToolStripMenuItem->Name = L"jumpsAndCallsToolStripMenuItem";
+			this->jumpsAndCallsToolStripMenuItem->Size = System::Drawing::Size(157, 22);
+			this->jumpsAndCallsToolStripMenuItem->Text = L"Jumps and calls";
+			this->jumpsAndCallsToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::jumpsAndCallsToolStripMenuItem_Click);
+			// 
+			// defaultToolStripMenuItem
+			// 
+			this->defaultToolStripMenuItem->Name = L"defaultToolStripMenuItem";
+			this->defaultToolStripMenuItem->Size = System::Drawing::Size(157, 22);
+			this->defaultToolStripMenuItem->Text = L"Default ";
+			this->defaultToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::defaultToolStripMenuItem_Click);
+			// 
+			// analyzeToolStripMenuItem
+			// 
+			this->analyzeToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->moduleToolStripMenuItem });
+			this->analyzeToolStripMenuItem->Name = L"analyzeToolStripMenuItem";
+			this->analyzeToolStripMenuItem->Size = System::Drawing::Size(134, 22);
+			this->analyzeToolStripMenuItem->Text = L"Analyze";
+			// 
+			// moduleToolStripMenuItem
+			// 
+			this->moduleToolStripMenuItem->Name = L"moduleToolStripMenuItem";
+			this->moduleToolStripMenuItem->Size = System::Drawing::Size(115, 22);
+			this->moduleToolStripMenuItem->Text = L"Module";
+			this->moduleToolStripMenuItem->Click += gcnew System::EventHandler(this, &Disassembly::moduleToolStripMenuItem_Click);
 			// 
 			// label1
 			// 
@@ -521,7 +737,7 @@ namespace KirbiDSM {
 			// 
 			this->textBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox1->Location = System::Drawing::Point(416, 129);
+			this->textBox1->Location = System::Drawing::Point(433, 129);
 			this->textBox1->MaximumSize = System::Drawing::Size(236, 20);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(236, 20);
@@ -533,7 +749,7 @@ namespace KirbiDSM {
 			this->label2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(497, 87);
+			this->label2->Location = System::Drawing::Point(514, 87);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(76, 13);
 			this->label2->TabIndex = 5;
@@ -543,7 +759,7 @@ namespace KirbiDSM {
 			// 
 			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->button1->Location = System::Drawing::Point(500, 156);
+			this->button1->Location = System::Drawing::Point(517, 156);
 			this->button1->MaximumSize = System::Drawing::Size(75, 23);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
@@ -663,7 +879,7 @@ namespace KirbiDSM {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(488, 40);
+			this->label5->Location = System::Drawing::Point(505, 40);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(88, 24);
 			this->label5->TabIndex = 19;
@@ -732,6 +948,7 @@ namespace KirbiDSM {
 			this->richTextBox2->Size = System::Drawing::Size(200, 336);
 			this->richTextBox2->TabIndex = 25;
 			this->richTextBox2->Text = L"";
+			this->richTextBox2->TextChanged += gcnew System::EventHandler(this, &Disassembly::richTextBox2_TextChanged);
 			// 
 			// label7
 			// 
@@ -739,7 +956,7 @@ namespace KirbiDSM {
 			this->label7->AutoSize = true;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(1054, 27);
+			this->label7->Location = System::Drawing::Point(1052, 40);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(81, 20);
 			this->label7->TabIndex = 26;
@@ -749,12 +966,12 @@ namespace KirbiDSM {
 			// 
 			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->button2->Location = System::Drawing::Point(486, 196);
+			this->button2->Location = System::Drawing::Point(503, 196);
 			this->button2->MaximumSize = System::Drawing::Size(112, 23);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(112, 23);
 			this->button2->TabIndex = 27;
-			this->button2->Text = L"Save all";
+			this->button2->Text = L"Save all settings ";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &Disassembly::button2_Click);
 			// 
@@ -773,7 +990,7 @@ namespace KirbiDSM {
 			// 
 			this->richTextBox3->Location = System::Drawing::Point(5, 27);
 			this->richTextBox3->Name = L"richTextBox3";
-			this->richTextBox3->Size = System::Drawing::Size(232, 195);
+			this->richTextBox3->Size = System::Drawing::Size(244, 195);
 			this->richTextBox3->TabIndex = 29;
 			this->richTextBox3->Text = L"";
 			this->richTextBox3->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &Disassembly::richTextBox3_MouseClick);
@@ -832,13 +1049,25 @@ namespace KirbiDSM {
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &Disassembly::button5_Click);
 			// 
+			// button6
+			// 
+			this->button6->Location = System::Drawing::Point(254, 116);
+			this->button6->MaximumSize = System::Drawing::Size(94, 23);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(94, 23);
+			this->button6->TabIndex = 35;
+			this->button6->Text = L"Clear ";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &Disassembly::button6_Click_1);
+			// 
 			// Disassembly
 			// 
 			this->AllowDrop = true;
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::Color::Maroon;
+			this->BackColor = System::Drawing::Color::Silver;
 			this->ClientSize = System::Drawing::Size(1186, 804);
+			this->Controls->Add(this->button6);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
@@ -882,6 +1111,7 @@ namespace KirbiDSM {
 			this->DragEnter += gcnew System::Windows::Forms::DragEventHandler(this, &Disassembly::Disassembly_DragEnter);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			this->contextMenuStrip1->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -892,6 +1122,110 @@ namespace KirbiDSM {
 		richTextBox1->Text = "";
 		richTextBox2->Text = "";
 		richTextBox3->Text = "";
+		std::stringstream settingsdata;
+		settingsdata << "=============KirbiDSM==================" << std::endl;
+
+		if (chckdefault->Checked)
+		{
+			settingsdata << "Font color default setted." << std::endl;
+			///return;
+		}
+		if (chckboxblue->Checked)
+		{
+			settingsdata << "Font color blue setted." << std::endl;
+			////return;
+		}
+		if (chckred->Checked)
+		{
+
+			settingsdata << "Font color red setted." << std::endl;
+			
+		}
+		if (chckgreen->Checked)
+		{
+			settingsdata << "Font color green setted." << std::endl;
+		}
+		if (chckyellow->Checked)
+		{
+			settingsdata << "Font color yellow setted." << std::endl;
+		}
+		if (chckfontdefault->Checked)
+		{
+			settingsdata << "Font size default setted." << std::endl;
+		}
+		if (chckfontmedium->Checked)
+		{
+			settingsdata << "Font size medium setted." << std::endl;
+		}
+		if (chckfontbig->Checked)
+		{
+			settingsdata << "Font size big setted." << std::endl;
+		}
+		if (chckboxbackcolordef->Checked)
+		{
+			settingsdata << "Back color default setted." << std::endl;
+		}
+		if (chckboxbackcolorred->Checked)
+		{
+			settingsdata << "Back color red setted." << std::endl;
+		}
+		if (chckboxbackcolorblu->Checked)
+		{
+			settingsdata << "Back color blue setted." << std::endl;
+		}
+		if (chckboxbackcolorwht->Checked)
+		{
+			settingsdata << "Back color white setted." << std::endl;
+		}
+		if (chckboxbackcolorblack->Checked)
+		{
+			settingsdata << "Back color black setted." << std::endl;
+		}
+		settingsdata << "======================================" << std::endl;
+		std::string outsets = settingsdata.str();
+		String^ datasetts = gcnew String(outsets.c_str());
+
+		if (upper == 1) {
+			richTextBox3->Text = datasetts->ToUpper();
+		}
+		else {
+			richTextBox3->Text = datasetts;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		System::String^ file;
 		OpenFileDialog^ open = gcnew OpenFileDialog;
 		open->Filter = "Executable files (*.exe, *.ax, *.cpl, *.dll, *.drv, *.efi, *.mui, *.ocx, *.scr, *.sys, *.tsp) | *.exe; *.ax; *.cpl; *.dll; *.drv; *.efi; *.mui; *.ocx; *.scr; *.sys; *.tsp;";
@@ -903,10 +1237,18 @@ namespace KirbiDSM {
 			return;
 
 		}
-		richTextBox3->Text += "Opening exe file getting lbase...";
-		richTextBox3->Text += Environment::NewLine;
-		Sleep(1000);
-		
+		if (upper == 1) {
+			String^ opexe = "Opening exe file getting lbase...";
+			richTextBox3->Text += opexe->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+			Sleep(1000);
+		}
+		else {
+
+			richTextBox3->Text += "Opening exe file getting lbase...";
+			richTextBox3->Text += Environment::NewLine;
+			Sleep(1000);
+		}
 		///goto end;
 
 
@@ -1061,7 +1403,7 @@ namespace KirbiDSM {
 			size_t count;
 			char enebyte[1024] = { 0 };
 			char registers[1024] = { 0 };
-
+			std::stringstream tstdis;
 
 			//System::Windows::Forms::DialogResult n = MessageBox::Show("Do you want to load all code?", "Info", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
 
@@ -1092,9 +1434,16 @@ namespace KirbiDSM {
 
 		        pedonecode = 1;
 				///richTextBox3->Text += Environment::NewLine;
-				richTextBox3->Text += "Getting & disassembling bytes...";
+				if(upper == 1) {
+				String^ lbs = "Getting & disassembling bytes...";
+				richTextBox3->Text += lbs->ToUpper();
 				richTextBox3->Text += Environment::NewLine;
-					////}
+				}
+				else {
+
+					richTextBox3->Text += "Getting & disassembling bytes...";
+					richTextBox3->Text += Environment::NewLine;
+				}
 				size_t j;
 				int x;
 				for (j = 0; j < count; j++) {
@@ -1108,30 +1457,38 @@ namespace KirbiDSM {
 
 
 						
-						sprintf(Disassembly, "0x%" PRIx64 ":\t%s\t\t%s\n", all_insn[j].address, all_insn[j].mnemonic, all_insn[j].op_str);
+						snprintf(Disassembly, sizeof(Disassembly), "0x%" PRIx64 ":\t%s\t\t%s\n", all_insn[j].address, all_insn[j].mnemonic, all_insn[j].op_str);
+						
+						tstdis << Disassembly;
+						
+
 						
 
 
-						
 
-
-
-
-						System::String ^Mnr = gcnew String(Disassembly);
 
 						
-						int maxlength = Mnr->Length;
-
-
-						richTextBox1->AppendText(Mnr); ////+ "\n");
-
-						codedsm = richTextBox1->Text;
 						///anassembi = Mnr;
 						
 
 						
 
 					}
+				std::string findis = tstdis.str();
+				System::String ^Mnr = gcnew String(findis.c_str());
+				String^ ifupper = Mnr;
+
+				///int maxlength = Mnr->Length;
+				if (upper == 1) {
+
+					ifupper = ifupper->ToUpper();
+				}
+
+				richTextBox1->AppendText(ifupper); ////+ "\n");
+
+				codedsm = richTextBox1->Text;
+				richTextBox1->SelectionStart = 0;
+				richTextBox1->ScrollToCaret();
 				}
 				else
 					MessageBox::Show("Failed to disassemble given code", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -1302,37 +1659,7 @@ private: System::Void toolStripMenuItem2_Click(System::Object^  sender, System::
 private: System::Void hexDumpToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
 
-	if (String::IsNullOrEmpty(flnm)) { MessageBox::Show("File not opened", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error); }
-
-	else {
-
-		System::Windows::Forms::DialogResult typehex = MessageBox::Show("Which type of hex you would open? The 1 is still not all the file, 2 almost all. Yes(1), No(2)", "Info", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-
-		if (typehex == System::Windows::Forms::DialogResult::Yes) {
-
-
-
-			//richTextBox3->Text += Environment::NewLine;
-			richTextBox3->Text += "Loading hex and opening window...";
-			richTextBox3->Text += Environment::NewLine;
-			Hex^ hex = gcnew Hex;
-			hex->filename = flnm;
-			hex->Show();
-		}
-		else if (typehex == System::Windows::Forms::DialogResult::No) {
-
-			richTextBox3->Text += "Loading hex and opening window...";
-			richTextBox3->Text += Environment::NewLine;
-			HexSecond^ secondhex = gcnew HexSecond;
-			secondhex->thenamfile = flnm;
-			secondhex->Show();
-
-
-
-
-
-		}
-	}
+	
 
 }
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1511,8 +1838,15 @@ private: System::Void textStringsToolStripMenuItem_Click(System::Object^  sender
 		else
 		{
 			///richTextBox3->Text += Environment::NewLine;
-			richTextBox3->Text += "Opening protection analayzer...";
-			richTextBox3->Text += Environment::NewLine;
+			if (upper == 1) {
+				String^ ptup = "Opening protection analayzer...";
+				richTextBox3->Text += ptup->ToUpper();
+				richTextBox3->Text += Environment::NewLine;
+			}
+			else {
+				richTextBox3->Text += "Opening protection analayzer...";
+				richTextBox3->Text += Environment::NewLine;
+			}
 			Protection^ prot = gcnew Protection;
 			prot->dataprotection = thesections;
 			prot->Show();
@@ -1520,8 +1854,9 @@ private: System::Void textStringsToolStripMenuItem_Click(System::Object^  sender
 }
 private: System::Void Disassembly_Load(System::Object^  sender, System::EventArgs^  e) {
 
+	MessageBox::Show("Right click for more functions!", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	std::stringstream log;
-	log << "=============KirbiDSM=============" << std::endl;
+	log << "=============KirbiDSM==================" << std::endl;
 	std::string loggo = log.str();
 	String^ getlog = gcnew String(loggo.c_str());
 	richTextBox3->Text = getlog;
@@ -1566,12 +1901,12 @@ private: System::Void Disassembly_Load(System::Object^  sender, System::EventArg
 			{
 
 				richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
-				richTextBox1->BackColor = Color::Blue;
-				richTextBox1->ForeColor = System::Drawing::Color::Red;
-				richTextBox2->BackColor = Color::Blue;
-				richTextBox2->ForeColor = System::Drawing::Color::Red;
-				richTextBox3->BackColor = Color::Blue;
-				richTextBox3->ForeColor = System::Drawing::Color::Red;
+				richTextBox1->BackColor = Color::White;
+				richTextBox1->ForeColor = System::Drawing::Color::Black;
+				richTextBox2->BackColor = Color::White;
+				richTextBox2->ForeColor = System::Drawing::Color::Black;
+				richTextBox3->BackColor = Color::White;
+				richTextBox3->ForeColor = System::Drawing::Color::Black;
 				chckdefault->Checked = true;
 				chckboxbackcolordef->Checked = true;
 				chckfontdefault->Checked = true;
@@ -1609,9 +1944,10 @@ private: System::Void Disassembly_Load(System::Object^  sender, System::EventArg
 			{
 
 				////richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
-				richTextBox1->BackColor = Color::Blue;
-				richTextBox2->BackColor = Color::Blue;
-				richTextBox3->BackColor = Color::Blue;
+				richTextBox1->BackColor = Color::White;
+				richTextBox2->BackColor = Color::White;
+				richTextBox3->BackColor = Color::White;
+				chckboxbackcolordef->Checked = true;
 				//richTextBox1->ForeColor = System::Drawing::Color::Red;
 				/*textBox1->ForeColor = System::Drawing::Color::Black;
 				label2->ForeColor = System::Drawing::Color::Black;
@@ -1641,9 +1977,9 @@ private: System::Void Disassembly_Load(System::Object^  sender, System::EventArg
 			}
 			if (lines->Contains(dascrivere5))
 			{
-				richTextBox1->ForeColor = System::Drawing::Color::Red;
-				richTextBox2->ForeColor = System::Drawing::Color::Red;
-				richTextBox3->ForeColor = System::Drawing::Color::Red;
+				richTextBox1->ForeColor = System::Drawing::Color::Black;
+				richTextBox2->ForeColor = System::Drawing::Color::Black;
+				richTextBox3->ForeColor = System::Drawing::Color::Black;
 				textBox1->ForeColor = System::Drawing::Color::Black;
 				label2->ForeColor = System::Drawing::Color::Black;
 				label1->ForeColor = System::Drawing::Color::Black;
@@ -1921,9 +2257,9 @@ private: System::Void chckdefault_CheckedChanged(System::Object^  sender, System
 		chckboxblue->Checked = false;
 		chckred->Checked = false;
 		chckyellow->Checked = false;
-		richTextBox1->ForeColor = System::Drawing::Color::Red;
-		richTextBox2->ForeColor = System::Drawing::Color::Red;
-		richTextBox3->ForeColor = System::Drawing::Color::Red;
+		richTextBox1->ForeColor = System::Drawing::Color::Black;
+		richTextBox2->ForeColor = System::Drawing::Color::Black;
+		richTextBox3->ForeColor = System::Drawing::Color::Black;
 		textBox1->ForeColor = System::Drawing::Color::Black;
 		label2->ForeColor = System::Drawing::Color::Black;
 		label1->ForeColor = System::Drawing::Color::Black;
@@ -1992,8 +2328,554 @@ private: System::Void chckfontbig_CheckedChanged(System::Object^  sender, System
 	else
 		fontsize = 0;
 }
-private: System::Void richTextBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+void highlightLineContaining(RichTextBox^ rtb, int line, String^ searchje, String^ searchjmp, String^ searchjnz, String^ searchcall, String^ searchretn, String^ searchloop)
+{
+			 String^ push = "push";
+			 String^ pop = "pop";
+			 String^ jo = "jo";
+			 String^ jno = "jno";
+			 String^ js = "js";
+			 String^ jns = "jns";
+			 String^ jb = "jb";
+			 String^ jnae = "jnae";
+			 String^ jc = "jc";
+			 String^ jnb = "jnb";
+			 String^ jae = "jae";
+			 String^ jnc = "jnc";
+			 String^ jbe = "jbe";
+			 String^ jna = "jna";
+			 String^ ja = "ja";
+			 String^ jnbe = "jnbe";
+			 String^ jl = "jl";
+			 String^ jnge = "jnge";
+			 String^ jge = "jge";
+			 String^ jnl = "jnl";
+			 String^ jle = "jle";
+			 String^ jng = "jng";
+			 String^ jg = "jg";
+			 String^ jnle = "jnle";
+			 String^ jp = "jp";
+			 String^ jpe = "jpe";
+			 String^ jnp = "jnp";
+			 String^ jpo = "jpo";
+			 String^ jcxz = "jcxz";
+			 String^ jecxz = "jecxz";
+			 int c0 = rtb->GetFirstCharIndexFromLine(line);
+			 int c1 = rtb->GetFirstCharIndexFromLine(line + 1);
+			 char je[1024] = { 0 };
+			 if (c1 < 0) c1 = rtb->Text->Length;
+			 rtb->SelectionStart = c0;
+			 rtb->SelectionLength = c1 - c0;
 
+			 
+			 if (rtb->SelectedText == rtb->SelectedText->ToUpper())
+			 {
+				 if (rtb->SelectedText->Contains(searchje->ToUpper())) {
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+
+				 if (rtb->SelectedText->Contains(searchjmp->ToUpper())) {
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Black;
+					 return;
+
+				 }
+				 if (rtb->SelectedText->Contains(searchjnz->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jo->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jno->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(js->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jns->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jb->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnae->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jc->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnb->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jae->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnc->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jbe->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jna->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(ja->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnbe->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jl->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnge->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jge->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnl->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jle->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jng->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jg->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnle->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jp->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jpe->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnp->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jpo->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jcxz->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jecxz->ToUpper())) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(searchcall->ToUpper()))
+				 {
+					 rtb->SelectionBackColor = Color::LightBlue;
+					 rtb->SelectionColor = Color::Black;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(searchretn->ToUpper()))
+				 {
+
+					 rtb->SelectionBackColor = Color::LightBlue;
+					 rtb->SelectionColor = Color::Black;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(push->ToUpper()))
+				 {
+
+					 //rtb->SelectionBackColor = Color::LightBlue;
+					 rtb->SelectionColor = Color::Blue;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(pop->ToUpper()))
+				 {
+
+					 ///rtb->SelectionBackColor = Color::LightBlue;
+					 rtb->SelectionColor = Color::Blue;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(searchloop->ToUpper())) {
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+				 }
+				 rtb->SelectionLength = 0;
+			 }
+			 else {
+
+				 if (rtb->SelectedText->Contains(searchje)) {
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+
+				 if (rtb->SelectedText->Contains(searchjmp)) {
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Black;
+					 return;
+
+				 }
+				 if (rtb->SelectedText->Contains(searchjnz)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jo)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jno)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(js)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jns)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jb)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnae)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jc)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnb)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jae)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnc)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jbe)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jna)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(ja)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnbe)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jl)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnge)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jge)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnl)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jle)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jng)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jg)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnle)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jp)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jpe)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jnp)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jpo)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jcxz)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(jecxz)) {
+
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(searchcall))
+				 {
+					 rtb->SelectionBackColor = Color::LightBlue;
+					 rtb->SelectionColor = Color::Black;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(searchretn))
+				 {
+
+					 rtb->SelectionBackColor = Color::LightBlue;
+					 rtb->SelectionColor = Color::Black;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(push))
+				 {
+
+					 //rtb->SelectionBackColor = Color::LightBlue;
+					 rtb->SelectionColor = Color::Blue;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(pop))
+				 {
+
+					 ///rtb->SelectionBackColor = Color::LightBlue;
+					 rtb->SelectionColor = Color::Blue;
+					 return;
+				 }
+				 if (rtb->SelectedText->Contains(searchloop)) {
+
+					 rtb->SelectionBackColor = Color::Yellow;
+					 rtb->SelectionColor = Color::Red;
+				 }
+				 rtb->SelectionLength = 0;
+			 }
+}
+private: System::Void richTextBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+	
+	
 
 	if (infoupper == 1 && checkBox1->Checked == true)
 	{
@@ -2062,8 +2944,16 @@ private: System::Void memoryMapToolStripMenuItem_Click(System::Object^  sender, 
 
 
 		///richTextBox1->Text += Environment::NewLine;
-		richTextBox3->Text += "Opening memory map...";
-		richTextBox1->Text += Environment::NewLine;
+		if (upper == 1) {
+			String^ memup = "Opening memory map...";
+			richTextBox3->Text += memup->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Opening memory map...";
+			richTextBox3->Text += Environment::NewLine;
+		}
+		
 		Memorymap^ mem = gcnew Memorymap;
 		mem->sects = thesections;
 		mem->myfile = flnm;
@@ -2187,8 +3077,16 @@ private: System::Void addressConverterValuesConverterToolStripMenuItem_Click(Sys
 
 		if (n == System::Windows::Forms::DialogResult::Yes) {
 
-			richTextBox3->Text += "Opening address converter...";
-			richTextBox3->Text += Environment::NewLine;
+			if (upper == 1) {
+
+				String^ adrsup = "Opening address converter...";
+				richTextBox3->Text += adrsup->ToUpper();
+				richTextBox3->Text += Environment::NewLine;
+			}
+			else {
+				richTextBox3->Text += "Opening address converter...";
+				richTextBox3->Text += Environment::NewLine;
+			}
 			AddressConverter^ addresscov = gcnew AddressConverter;
 			addresscov->filedir = flnm;
 			addresscov->Show();
@@ -2198,8 +3096,16 @@ private: System::Void addressConverterValuesConverterToolStripMenuItem_Click(Sys
 	else
 	{
 		///richTextBox3->Text += Environment::NewLine;
-		richTextBox3->Text += "Opening address converter...";
-		richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+
+			String^ adrsuptwo = "Opening address converter...";
+			richTextBox3->Text += adrsuptwo->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Opening address converter...";
+			richTextBox3->Text += Environment::NewLine;
+		}
 		AddressConverter^ addresscov = gcnew AddressConverter;
 		addresscov->filedir = flnm;
 		addresscov->asmcode = codedsm;
@@ -2289,157 +3195,7 @@ private: System::Void chckboxbackcolorwht_CheckedChanged(System::Object^  sender
 private: System::Void exitToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
 
 	//String^ filehexdir = "";
-	String^ thefilehexname = "";
-	if (String::IsNullOrEmpty(flnm)) {
-
-
-		//////OpenFileDialog^
-		System::Windows::Forms::DialogResult info = MessageBox::Show("The file is not opened, Do you want to open it?", "KirbiDSM", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-		if (info == System::Windows::Forms::DialogResult::Yes)
-		{
-
-
-			OpenFileDialog^ openfile = gcnew OpenFileDialog;
-			openfile->Title = "Open the file";
-			openfile->Filter = "Executable files (*.exe, *.ax, *.cpl, *.dll, *.drv, *.efi, *.mui, *.ocx, *.scr, *.sys, *.tsp) | *.exe; *.ax; *.cpl; *.dll; *.drv; *.efi; *.mui; *.ocx; *.scr; *.sys; *.tsp;";
-			openfile->InitialDirectory = "C:\\";
-
-			if (openfile->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
-			flnm = openfile->FileName;
-			Sleep(3000);
-			
-
-			SaveFileDialog^ savehex = gcnew SaveFileDialog;
-			savehex->Title = "Save Hex Dump as";
-			savehex->FileName = "HexDump.txt";
-			savehex->Filter = "All files (*. *)|*. *";
-			savehex->InitialDirectory = "C:\\";
-
-			if (savehex->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
-
-			thefilehexname = savehex->FileName;
-
-			System::IO::StreamWriter^ writehex = gcnew System::IO::StreamWriter(thefilehexname);
-
-			String^ hexdump = "";
-
-
-			msclr::interop::marshal_context context;
-			std::string getdirectory = context.marshal_as<std::string>(flnm);
-
-			FILE* f = fopen(getdirectory.c_str(), "rb"); ///perchè crasha? praticamente devo ricavarmi l'hex dump dell'exe
-			fseek(f, 0, SEEK_END);
-			long lsize = 0;
-
-			lsize = ftell(f);
-			rewind(f);
-			char*lll = new char[lsize];
-			int quantoletto = 0;
-
-			while (quantoletto < lsize)
-			{
-				quantoletto += fread(lll, 1, lsize - quantoletto, f);
-			}
-			fclose(f);
-
-			int hex = 0;
-			char *hexChar = new char[lsize];
-			//non c'e l'ha fa tutto il file
-			for (int x = 0; x < 1000; x++)
-			{
-				hex = lll[x];
-				itoa(hex, hexChar, 16);
-
-				System::String ^checksumstr = gcnew String(hexChar);
-
-				Environment::NewLine;
-				///checksumstr->ToUpper();
-				hexdump += checksumstr->ToUpper();//////checksumstr->ToUpper() + " ";// +=
-
-
-
-			}
-			
-			writehex->WriteLine(hexdump);
-			writehex->Close();
-			flnm = flnm->Empty;
-			MessageBox::Show("Successfully saved.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
-
-
-		}
-		
-		
-
-
-
-
-	}
-	else
-	{
-
-
-
-		SaveFileDialog^ savehex = gcnew SaveFileDialog;
-		savehex->Title = "Save Hex Dump as";
-		savehex->Filter = "All files (*. *)|*. *";
-		savehex->InitialDirectory = "C:\\";
-		savehex->FileName = "HexDump.txt";
-
-		if (savehex->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
-
-		thefilehexname = savehex->FileName;
-
-		System::IO::StreamWriter^ writehex = gcnew System::IO::StreamWriter(thefilehexname);
-
-		String^ hexdump = "";
-
-
-		msclr::interop::marshal_context context;
-		std::string getdirectory = context.marshal_as<std::string>(flnm);
-
-		FILE* f = fopen(getdirectory.c_str(), "rb"); ///perchè crasha? praticamente devo ricavarmi l'hex dump dell'exe
-		fseek(f, 0, SEEK_END);
-		long lsize = 0;
-
-		lsize = ftell(f);
-		rewind(f);
-		char*lll = new char[lsize];
-		int quantoletto = 0;
-
-		while (quantoletto < lsize)
-		{
-			quantoletto += fread(lll, 1, lsize - quantoletto, f);
-		}
-		fclose(f);
-
-		int hex = 0;
-		char *hexChar = new char[lsize];
-		//non c'e l'ha fa tutto il file
-		for (int x = 0; x < 1000; x++)
-		{
-			hex = lll[x];
-			itoa(hex, hexChar, 16);
-
-			System::String ^checksumstr = gcnew String(hexChar);
-
-			Environment::NewLine;
-			///checksumstr->ToUpper();
-			hexdump += checksumstr->ToUpper();//////checksumstr->ToUpper() + " ";// +=
-
-
-
-		}
-		writehex->WriteLine(hexdump);
-		writehex->Close();
-		MessageBox::Show("Successfully saved.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
-
-
-
-
-
-	}
+	
 
 	
 
@@ -2526,6 +3282,7 @@ private: System::Void checkBox1_CheckedChanged(System::Object^  sender, System::
 			////String^ assemblysource = richTextBox1->Text;
 
 			richTextBox1->Text = richTextBox1->Text->ToUpper();
+			richTextBox1->SelectionLength = 0;
 			richTextBox2->Text = richTextBox2->Text->ToUpper();
 			richTextBox3->Text = richTextBox3->Text->ToUpper();
 			upper = 1;
@@ -2548,6 +3305,7 @@ private: System::Void checkBox1_CheckedChanged(System::Object^  sender, System::
 	{
 		//richTextBox1->Text = anassembi;
 		richTextBox1->Text = richTextBox1->Text->ToLower();
+		richTextBox1->SelectionLength = 0;
 	///	richTextBox2->Text = richTextBox2->Text->ToLower();
 		richTextBox3->Text = richTextBox3->Text->ToLower();
 		upper = 0;
@@ -2857,9 +3615,9 @@ private: System::Void chckboxbackcolordef_CheckedChanged(System::Object^  sender
 		/*richTextBox1->BackColor = Color::Red;
 		richTextBox2->BackColor = Color::Red;
 		richTextBox3->BackColor = Color::Red;*/
-		richTextBox1->BackColor = Color::Blue;
-		richTextBox2->BackColor = Color::Blue;
-		richTextBox3->BackColor = Color::Blue;
+		richTextBox1->BackColor = Color::White;
+		richTextBox2->BackColor = Color::White;
+		richTextBox3->BackColor = Color::White;
 		richTextBox1->ForeColor = Color::Black;
 		richTextBox2->ForeColor = Color::Black;
 		richTextBox3->ForeColor = Color::Black;
@@ -2874,11 +3632,21 @@ private: System::Void chckboxbackcolordef_CheckedChanged(System::Object^  sender
 }
 private: System::Void richTextBox3_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 
-
+	
 	if (infoupper == 1 && checkBox1->Checked)
 	{
 		richTextBox3->Text = richTextBox3->Text->ToUpper();
 	}
+	richTextBox3->SelectionStart = richTextBox3->Text->Length;
+	richTextBox3->ScrollToCaret();
+
+	if (upper == 1)
+	{
+		richTextBox3->Text = richTextBox3->Text->ToUpper();
+	}
+	/*else {
+		richTextBox3->Text = richTextBox3->Text->ToLower();
+	}*/
 	/*this->richTextBox3->SelectAll();
 	int textLength = richTextBox3->SelectedText->Length;
 	for (int i = textLength; i >= 0; --i)
@@ -2931,24 +3699,35 @@ private: System::Void btnRegisters_Click(System::Object^  sender, System::EventA
 }
 private: System::Void btnRegisters_Click_1(System::Object^  sender, System::EventArgs^  e) {
 
-	if (pedonecode > 0)
-	{
 
-		richTextBox2->Text += "EAX" + " (AX, AH, AL)";
-		richTextBox2->Text += Environment::NewLine;
-		//richTextBox2->Text += Environment::NewLine;
-		richTextBox2->Text += "EBX" + " (BX, BH , BL)";
-	    richTextBox2->Text += Environment::NewLine;
-		//richTextBox2->Text += Environment::NewLine;
-		richTextBox2->Text += "ECX" + " (CX, CH, CL)";
-		richTextBox2->Text += Environment::NewLine;
-		//richTextBox2->Text += Environment::NewLine;
-		richTextBox2->Text += "EDX" + " (DX, DH, DL)";
-		richTextBox3->Text += "Registers enabled...";
-		richTextBox3->Text += Environment::NewLine;
+	if (String::IsNullOrEmpty(richTextBox2->Text)) {
+		if (pedonecode > 0)
+		{
+
+			richTextBox2->Text += "EAX" + " (AX, AH, AL)";
+			richTextBox2->Text += Environment::NewLine;
+			//richTextBox2->Text += Environment::NewLine;
+			richTextBox2->Text += "EBX" + " (BX, BH , BL)";
+			richTextBox2->Text += Environment::NewLine;
+			//richTextBox2->Text += Environment::NewLine;
+			richTextBox2->Text += "ECX" + " (CX, CH, CL)";
+			richTextBox2->Text += Environment::NewLine;
+			//richTextBox2->Text += Environment::NewLine;
+			richTextBox2->Text += "EDX" + " (DX, DH, DL)";
+			richTextBox3->Text += "Registers enabled...";
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else
+			richTextBox2->Text += "Could not disassemble the file!";
+
 	}
-	else
-		richTextBox2->Text += "Could not disassembler the file!";
+	else {
+		richTextBox2->Text = "";
+		richTextBox3->Text += "Registers are hide." + "\n";
+		btnRegisters->Text = "Show Registers";
+	}
+	
+
 
 }
 private: System::Void chckboxbackcolorblack_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
@@ -2983,8 +3762,17 @@ private: System::Void importsTableToolStripMenuItem_Click(System::Object^  sende
 	else
 	{
 		///richTextBox3->Text += Environment::NewLine;
-		richTextBox3->Text += "Opening import tables...";
-		richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+
+			String^ impup = "Opening import tables...";
+			richTextBox3->Text += impup->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Opening import tables...";
+			richTextBox3->Text += Environment::NewLine;
+		}
+		
 		ImportsTable^ imports = gcnew ImportsTable;
 		imports->fileimports = flnm;
 		imports->Show();
@@ -2999,8 +3787,17 @@ private: System::Void exportsTableToolStripMenuItem_Click(System::Object^  sende
 	else
 	{
 		////richTextBox3->Text += Environment::NewLine;
-		richTextBox3->Text += "Opening exports table...";
-		richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+
+			String^ expup = "Opening exports table...";
+			richTextBox3->Text += expup->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Opening exports table...";
+			richTextBox3->Text += Environment::NewLine;
+		}
+		
 		Exports^ exports = gcnew Exports;
 		exports->file = flnm;
 		exports->Show();
@@ -3034,8 +3831,16 @@ private: System::Void sectionsEditorToolStripMenuItem_Click_1(System::Object^  s
 
 	else
 	{
-		richTextBox3->Text += "Opening sections editor...";
-		richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+
+			String^ secaddedcup = "Opening sections editor...";
+			richTextBox3->Text += secaddedcup->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Opening sections editor...";
+			richTextBox3->Text += Environment::NewLine;
+		}
 		SectionsEditor^ editor = gcnew SectionsEditor;
 		editor->filenmmi = flnm;
 		editor->Show();
@@ -3061,8 +3866,16 @@ private: System::Void relocationsViewerToolStripMenuItem_Click(System::Object^  
 	else
 	{
 		/////richTextBox3->Text += Environment::NewLine;
-		richTextBox3->Text += "Opening relocations...";
-		richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+
+			String^ rlcup = "Opening relocations...";
+			richTextBox3->Text += rlcup->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Opening relocations...";
+			richTextBox3->Text += Environment::NewLine;
+		}
 		RelocationsViewer^ reloc = gcnew RelocationsViewer;
 		reloc->myfile = flnm;
 		reloc->Show();
@@ -3088,8 +3901,16 @@ private: System::Void importsEditorToolStripMenuItem_Click(System::Object^  send
 
 	else
 	{
-		richTextBox3->Text += "Opening imports editor...";
-		richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+
+			String^ impedcup = "Opening imports editor...";
+			richTextBox3->Text += impedcup->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Opening imports editor...";
+			richTextBox3->Text += Environment::NewLine;
+		}
 		ImportsEditor^ impedit = gcnew ImportsEditor;
 		impedit->target = flnm;
 		impedit->Show();
@@ -3109,8 +3930,16 @@ private: System::Void relocationsEditorToolStripMenuItem_Click(System::Object^  
 
 	else
 	{
-		richTextBox3->Text += "Opening relocations editor...";
-		richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+
+			String^ rlcededcup = "Opening relocations editor...";
+			richTextBox3->Text += rlcededcup->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Opening relocations editor...";
+			richTextBox3->Text += Environment::NewLine;
+		}
 		RelocationsEditor^ rlcedit = gcnew RelocationsEditor;
 		rlcedit->dirfile = flnm;
 		rlcedit->Show();
@@ -3135,14 +3964,116 @@ private: System::Void Disassembly_DragDrop(System::Object^  sender, System::Wind
 		richTextBox1->Text = "";
 		richTextBox2->Text = "";
 		richTextBox3->Text = "";
+
+		std::stringstream settingsdata;
+		settingsdata << "=============KirbiDSM==================" << std::endl;
+
+		if (chckdefault->Checked)
+		{
+			settingsdata << "Font color default setted." << std::endl;
+			///return;
+		}
+		if (chckboxblue->Checked)
+		{
+			settingsdata << "Font color blue setted." << std::endl;
+			////return;
+		}
+		if (chckred->Checked)
+		{
+
+			settingsdata << "Font color red setted." << std::endl;
+
+		}
+		if (chckgreen->Checked)
+		{
+			settingsdata << "Font color green setted." << std::endl;
+		}
+		if (chckyellow->Checked)
+		{
+			settingsdata << "Font color yellow setted." << std::endl;
+		}
+		if (chckfontdefault->Checked)
+		{
+			settingsdata << "Font size default setted." << std::endl;
+		}
+		if (chckfontmedium->Checked)
+		{
+			settingsdata << "Font size medium setted." << std::endl;
+		}
+		if (chckfontbig->Checked)
+		{
+			settingsdata << "Font size big setted." << std::endl;
+		}
+		if (chckboxbackcolordef->Checked)
+		{
+			settingsdata << "Back color default setted." << std::endl;
+		}
+		if (chckboxbackcolorred->Checked)
+		{
+			settingsdata << "Back color red setted." << std::endl;
+		}
+		if (chckboxbackcolorblu->Checked)
+		{
+			settingsdata << "Back color blue setted." << std::endl;
+		}
+		if (chckboxbackcolorwht->Checked)
+		{
+			settingsdata << "Back color white setted." << std::endl;
+		}
+		if (chckboxbackcolorblack->Checked)
+		{
+			settingsdata << "Back color black setted." << std::endl;
+		}
+		settingsdata << "======================================" << std::endl;
+		std::string outsets = settingsdata.str();
+		String^ datasetts = gcnew String(outsets.c_str());
+
+		if (upper == 1) {
+			richTextBox3->Text = datasetts->ToUpper();
+
+		}
+		else {
+
+			richTextBox3->Text = datasetts;
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		//System::String^ fff = open->FileName;
 		flnm = file;
 		System::String^ dir = "KirbiDSM " + "- " + file;
 		this->Text = dir;
 
-		richTextBox3->Text = "Opening exe file getting lbase...";
-		Sleep(1000);
-		richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+			String^ openfl = "Opening exe file getting lbase...";
+			richTextBox3->Text += openfl->ToUpper();
+			Sleep(1000);
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+
+			richTextBox3->Text += "Opening exe file getting lbase...";
+			Sleep(1000);
+			richTextBox3->Text += Environment::NewLine;
+		}
 		///Sleep(2);
 		///file = open->FileName;
 		int i = 0;
@@ -3288,7 +4219,7 @@ private: System::Void Disassembly_DragDrop(System::Object^  sender, System::Wind
 			size_t count;
 			char enebyte[1024] = { 0 };
 			char registers[1024] = { 0 };
-
+			std::stringstream tstdis;
 
 			//System::Windows::Forms::DialogResult n = MessageBox::Show("Do you want to load all code?", "Info", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
 
@@ -3318,10 +4249,17 @@ private: System::Void Disassembly_DragDrop(System::Object^  sender, System::Wind
 
 
 				pedonecode = 1;
-				//richTextBox3->Text += Environment::NewLine;
-				richTextBox3->Text += "Getting & disassembling bytes...";
+				///richTextBox3->Text += Environment::NewLine;
+				if(upper == 1) {
+				String^ bytesup = "Getting & disassembling bytes...";
+				richTextBox3->Text += bytesup->ToUpper();
 				richTextBox3->Text += Environment::NewLine;
-				////}
+				}
+				else {
+
+					richTextBox3->Text += "Getting & disassembling bytes...";
+					richTextBox3->Text += Environment::NewLine;
+				}
 				size_t j;
 				int x;
 				for (j = 0; j < count; j++) {
@@ -3335,7 +4273,9 @@ private: System::Void Disassembly_DragDrop(System::Object^  sender, System::Wind
 
 
 
-					sprintf(Disassembly, "0x%" PRIx64 ":\t%s\t\t%s\n", all_insn[j].address, all_insn[j].mnemonic, all_insn[j].op_str);
+					snprintf(Disassembly, sizeof(Disassembly), "0x%" PRIx64 ":\t%s\t\t%s\n", all_insn[j].address, all_insn[j].mnemonic, all_insn[j].op_str);
+
+					tstdis << Disassembly;
 
 
 
@@ -3344,24 +4284,29 @@ private: System::Void Disassembly_DragDrop(System::Object^  sender, System::Wind
 
 
 
-					System::String ^Mnr = gcnew String(Disassembly);
-
-
-					int maxlength = Mnr->Length;
-
-
-					richTextBox1->AppendText(Mnr); ////+ "\n");
-
-					codedsm = richTextBox1->Text;
 					///anassembi = Mnr;
 
 
 
 
 				}
+				std::string findis = tstdis.str();
+				System::String ^Mnr = gcnew String(findis.c_str());
+				String^ ifup = Mnr;
+
+				///int maxlength = Mnr->Length;
+				if (upper == 1) {
+
+					ifup = ifup->ToUpper();
+				}
+
+				richTextBox1->AppendText(ifup); ////+ "\n");
+
+				codedsm = richTextBox1->Text;
+				richTextBox1->SelectionStart = 0;
+				richTextBox1->ScrollToCaret();
 			}
 			else
-
 			MessageBox::Show("Failed to disassemble given code", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			cs_close(&handle);
 			UnmapViewOfFile(lpBase);
@@ -3467,7 +4412,7 @@ private: System::Void Disassembly_DragDrop(System::Object^  sender, System::Wind
 }
 private: System::Void aboutToolStripMenuItem2_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	MessageBox::Show("KirbiDSM is a Disassembler for windows started 14/02/2018 by Kirbiflint. it can read/editor PE. Is written in C++/CLI .NET. If you find any issue/bug, feel free to contact me at Discord. (Kirbiflint#3098). Enjoy", "About KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	MessageBox::Show("KirbiDSM is a Disassembler for windows started 14/02/2018 by Kirbiflint. it can read/editor PE. Is written in C++/CLI .NET. If you find any issue/bug, feel free to contact me at Discord. (Kirbiflint#3098). Enjoy!", "About KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 private: System::Void creditsToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
@@ -5322,6 +6267,966 @@ private: System::Void richTextBox1_MouseUp(System::Object^  sender, System::Wind
 	{
 		isDrag = false;
 	}*/
+}
+private: System::Void menuStrip1_ItemClicked(System::Object^  sender, System::Windows::Forms::ToolStripItemClickedEventArgs^  e) {
+}
+private: System::Void dump1ToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (String::IsNullOrEmpty(flnm)) { MessageBox::Show("File not opened", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error); }
+
+	else
+	{
+		/////richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+			String^ uphx = "Loading hex and opening window...";
+			richTextBox3->Text += uphx->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Loading hex and opening window...";
+			richTextBox3->Text += Environment::NewLine;
+		}
+		Hex^ hex = gcnew Hex;
+		hex->filename = flnm;
+		hex->Show();
+
+
+
+
+	}
+}
+private: System::Void dump2ToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (String::IsNullOrEmpty(flnm)) { MessageBox::Show("File not opened", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error); }
+
+	else
+	{
+		/////richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+			String^ uphx = "Loading hex and opening window...";
+			richTextBox3->Text += uphx->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Loading hex and opening window...";
+			richTextBox3->Text += Environment::NewLine;
+		}
+		HexSecond^ secondhex = gcnew HexSecond;
+		secondhex->thenamfile = flnm;
+		secondhex->Show();
+
+
+
+
+	}
+}
+private: System::Void dump3ToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+
+	if (String::IsNullOrEmpty(flnm)) { MessageBox::Show("File not opened", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error); }
+
+	else
+	{
+		//richTextBox3->Text += Environment::NewLine;
+		if (upper == 1) {
+			String^ uphx = "Loading hex and opening window...";
+			richTextBox3->Text += uphx->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else {
+			richTextBox3->Text += "Loading hex and opening window...";
+			richTextBox3->Text += Environment::NewLine;
+		}
+		HexThird^ hexthird = gcnew HexThird;
+		hexthird->thefilename = flnm;
+		hexthird->Show();
+
+
+
+
+	}
+}
+private: System::Void addressToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (richTextBox1->SelectionLength > 0) {
+		Clipboard::Clear();
+
+		String^ selectedtxt = richTextBox1->SelectedText;
+		selectedtxt = selectedtxt->Substring(0, 6);
+		///selectedtxt->
+		///String^ firstFivChar = gcnew String(selectedtxt->Take(5)->ToArray());
+		Clipboard::SetDataObject(selectedtxt, false);
+		bool trueorfalse = richTextBox3->Text->Contains("Address copied to clipboard.");
+		if (trueorfalse == false) {
+			richTextBox3->Text += "Address copied to clipboard.";
+			richTextBox3->Text += Environment::NewLine;
+		}
+	}
+	else {
+
+		richTextBox3->Text += "Line not selected.";
+		richTextBox3->Text += Environment::NewLine;
+
+	}
+}
+private: System::Void addImagebaseToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	char output[1024] = { 0 };
+
+	if (richTextBox1->SelectionLength > 0) {
+
+
+		Clipboard::Clear();
+		msclr::interop::marshal_context context;
+		String^ selectedtxt = richTextBox1->SelectedText;
+		selectedtxt = selectedtxt->Substring(0, 6);
+		std::string rva = context.marshal_as<std::string>(selectedtxt);
+		DWORD rvadword = strtol(rva.c_str(), 0, 0);
+		DWORD calc = rvadword + imgbase;
+		sprintf(output, "0x%x", calc);
+		String^ copyva = gcnew String(output);
+		Clipboard::SetDataObject(copyva, false);
+		bool trueorfalse = richTextBox3->Text->Contains("Address with imagebase copied to clipboard.");
+		if (trueorfalse == false) {
+			richTextBox3->Text += "Address with imagebase copied to clipboard.";
+			richTextBox3->Text += Environment::NewLine;
+		}
+
+		///selectedtxt->
+		///String^ firstFivChar = gcnew String(selectedtxt->Take(5)->ToArray());
+
+	}
+	else {
+
+
+
+		richTextBox3->Text += "Line not selected.";
+		richTextBox3->Text += Environment::NewLine;
+
+	}
+}
+private: System::Void selectedToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (richTextBox1->SelectionLength > 0) {
+		Clipboard::Clear();
+
+		///String^ selectedtxt = richTextBox1->SelectedText;
+		////selectedtxt = selectedtxt->Substring(0, 6);
+		///selectedtxt->
+		///String^ firstFivChar = gcnew String(selectedtxt->Take(5)->ToArray());
+		Clipboard::SetDataObject(richTextBox1->SelectedText, false);
+		bool trueorfalse = richTextBox3->Text->Contains("Selected line copied to clipboard.");
+		if (trueorfalse == false) {
+			richTextBox3->Text += "Selected line copied to clipboard.";
+			richTextBox3->Text += Environment::NewLine;
+		}
+
+	}
+	else {
+
+		bool trueorfalse = richTextBox3->Text->Contains("Line not selected.");
+		if (trueorfalse == false) {
+			richTextBox3->Text += "Line not selected.";
+			richTextBox3->Text += Environment::NewLine;
+		}
+
+
+	}
+}
+private: System::Void button6_Click_1(System::Object^  sender, System::EventArgs^  e) {
+
+	richTextBox1->Text = "";
+	richTextBox2->Text = "";
+	richTextBox3->Text = "";
+	flnm = "";
+	std::stringstream settingsdata;
+	settingsdata << "=============KirbiDSM==================" << std::endl;
+
+	if (chckdefault->Checked)
+	{
+		settingsdata << "Font color default setted." << std::endl;
+		///return;
+	}
+	if (chckboxblue->Checked)
+	{
+		settingsdata << "Font color blue setted." << std::endl;
+		////return;
+	}
+	if (chckred->Checked)
+	{
+
+		settingsdata << "Font color red setted." << std::endl;
+
+	}
+	if (chckgreen->Checked)
+	{
+		settingsdata << "Font color green setted." << std::endl;
+	}
+	if (chckyellow->Checked)
+	{
+		settingsdata << "Font color yellow setted." << std::endl;
+	}
+	if (chckfontdefault->Checked)
+	{
+		settingsdata << "Font size default setted." << std::endl;
+	}
+	if (chckfontmedium->Checked)
+	{
+		settingsdata << "Font size medium setted." << std::endl;
+	}
+	if (chckfontbig->Checked)
+	{
+		settingsdata << "Font size big setted." << std::endl;
+	}
+	if (chckboxbackcolordef->Checked)
+	{
+		settingsdata << "Back color default setted." << std::endl;
+	}
+	if (chckboxbackcolorred->Checked)
+	{
+		settingsdata << "Back color red setted." << std::endl;
+	}
+	if (chckboxbackcolorblu->Checked)
+	{
+		settingsdata << "Back color blue setted." << std::endl;
+	}
+	if (chckboxbackcolorwht->Checked)
+	{
+		settingsdata << "Back color white setted." << std::endl;
+	}
+	if (chckboxbackcolorblack->Checked)
+	{
+		settingsdata << "Back color black setted." << std::endl;
+	}
+	settingsdata << "======================================" << std::endl;
+	std::string outsets = settingsdata.str();
+	String^ datasetts = gcnew String(outsets.c_str());
+	richTextBox3->Text = datasetts;
+	//Insospeso
+}
+private: System::Void button7_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	
+}
+private: System::Void jumpsAndCallsToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (richTextBox1->Text->Length > 0 && flnm->Length > 0) {
+	
+	richTextBox1->ForeColor = Color::Black;
+	richTextBox1->BackColor = Color::White;
+	int lineNumber = richTextBox1->GetLineFromCharIndex(richTextBox1->TextLength) + 1;
+	for (int i = 0; i < lineNumber; i++) {
+		highlightLineContaining(richTextBox1, i, "je", "jmp", "jne", "call", "ret", "loop");
+	}
+	richTextBox1->SelectionStart = 0;
+	richTextBox1->ScrollToCaret();
+	richTextBox3->Text += "Jump and calls mode setted.";
+	richTextBox3->Text += "\n";
+	}
+	else {
+		MessageBox::Show("File not opened", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+
+	}
+}
+void analyzer(RichTextBox^ disrich, RichTextBox^ logrich, int currentline)
+{
+	
+	String^ push = "push";
+	String^ call = "call";
+	std::stringstream infoout;
+	
+	int c0 = disrich->GetFirstCharIndexFromLine(currentline);
+	int c1 = disrich->GetFirstCharIndexFromLine(currentline + 1);
+	char je[1024] = { 0 };
+	if (c1 < 0) c1 = disrich->Text->Length;
+	disrich->SelectionStart = c0;
+	disrich->SelectionLength = c1 - c0;
+
+	if (disrich->SelectedText->Contains(push))
+	{
+		if (disrich->SelectedText->Contains("ebp"))
+		{
+			String^ sub = disrich->SelectedText->Substring(0, 6);
+			msclr::interop::marshal_context context;
+			std::string standardString = context.marshal_as<std::string>(sub);
+			/*infoout << "Possible function at the address " << standardString << std::endl;
+			std::string printoutinfo = infoout.str();
+			String^ manout = gcnew String(printoutinfo.c_str());*/
+			outputinfos += "Possible function at the address: " + sub;
+			outputinfos += "\n";
+			
+			return;
+		}
+		return;
+
+	}
+	if (disrich->SelectedText->Contains(call))
+	{
+		String^ firstsubofcall = disrich->SelectedText->Substring(0, 6);
+		int sublength = firstsubofcall->Length;
+		String^ addressofcurrentistru = firstsubofcall;
+		String^ secondsub = disrich->SelectedText->Substring(6, disrich->SelectedText->Length - sublength);
+		msclr::interop::marshal_context contextocall;
+		std::string callis = contextocall.marshal_as<std::string>(secondsub);
+		std::string addrs = contextocall.marshal_as<std::string>(addressofcurrentistru);
+		/*infoout << "\b\b" << callis << " function at the address" << addrs << std::endl;
+		std::string printoutinfo = infoout.str();
+		String^ manout = gcnew String(printoutinfo.c_str());*/
+		outputinfos += secondsub + " function at address: " + addressofcurrentistru;
+		outputinfos += "\n";
+		
+		return;
+	}
+	disrich->SelectionLength = 0;
+}
+private: System::Void moduleToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (richTextBox3->Text->Length > 0 && flnm->Length > 0) {
+
+		///outputinfos = richTextBox3->Text;
+		int lineNumber = richTextBox1->GetLineFromCharIndex(richTextBox1->TextLength) + 1;
+		for (int i = 0; i < lineNumber; i++) {
+			analyzer(richTextBox1, richTextBox3, i);
+		}
+		LogAnalysis^ logi = gcnew LogAnalysis;
+		logi->towrite = outputinfos;
+		logi->Show();
+	}
+	else {
+
+		MessageBox::Show("File not opened.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		
+	}
+}
+private: System::Void contextMenuStrip1_Opening(System::Object^  sender, System::ComponentModel::CancelEventArgs^  e) {
+}
+private: System::Void richTextBox2_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	if (richTextBox2->Text->Length > 0 && flnm->Length > 0)
+	{
+		btnRegisters->Text = "Hide Registers";
+	}
+}
+private: System::Void defaultToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	richTextBox1->BackColor = Color::White;
+	richTextBox1->ForeColor = Color::Black;
+	richTextBox1->SelectionLength = 0;
+}
+private: System::Void stringsToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (String::IsNullOrEmpty(flnm)) {
+
+		MessageBox::Show("File not opened", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	else {
+
+		if (upper == 1) {
+
+			String^ strsup = "Loading all file strings...";
+			richTextBox3->Text += strsup->ToUpper();
+			richTextBox3->Text += Environment::NewLine;
+		}
+		else
+		{
+			richTextBox3->Text += "Loading all file strings...";
+			richTextBox3->Text += Environment::NewLine;
+		}
+		Strings^ allstrings = gcnew Strings;
+		allstrings->targetstrfile = flnm;
+		allstrings->Show();
+
+	}
+}
+private: System::Void patternToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+
+}
+private: System::Void dump1ToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	String^ thefilehexname = "";
+	if (String::IsNullOrEmpty(flnm)) {
+
+
+		//////OpenFileDialog^
+		System::Windows::Forms::DialogResult info = MessageBox::Show("The file is not opened, Do you want to open it?", "KirbiDSM", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+		if (info == System::Windows::Forms::DialogResult::Yes)
+		{
+
+
+			OpenFileDialog^ openfile = gcnew OpenFileDialog;
+			openfile->Title = "Open the file";
+			openfile->Filter = "Executable files (*.exe, *.ax, *.cpl, *.dll, *.drv, *.efi, *.mui, *.ocx, *.scr, *.sys, *.tsp) | *.exe; *.ax; *.cpl; *.dll; *.drv; *.efi; *.mui; *.ocx; *.scr; *.sys; *.tsp;";
+			openfile->InitialDirectory = "C:\\";
+
+			if (openfile->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+			flnm = openfile->FileName;
+			Sleep(3000);
+
+
+			SaveFileDialog^ savehex = gcnew SaveFileDialog;
+			savehex->Title = "Save Hex Dump as";
+			savehex->FileName = "HexDump.txt";
+			savehex->Filter = "All files (*. *)|*. *";
+			savehex->InitialDirectory = "C:\\";
+
+			if (savehex->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+
+			thefilehexname = savehex->FileName;
+
+			System::IO::StreamWriter^ writehex = gcnew System::IO::StreamWriter(thefilehexname);
+
+			String^ hexdump = "";
+
+
+			msclr::interop::marshal_context context;
+			std::string getdirectory = context.marshal_as<std::string>(flnm);
+
+			FILE* f = fopen(getdirectory.c_str(), "rb"); ///perchè crasha? praticamente devo ricavarmi l'hex dump dell'exe
+			fseek(f, 0, SEEK_END);
+			long lsize = 0;
+
+			lsize = ftell(f);
+			rewind(f);
+			char*lll = new char[lsize];
+			int quantoletto = 0;
+
+			while (quantoletto < lsize)
+			{
+				quantoletto += fread(lll, 1, lsize - quantoletto, f);
+			}
+			fclose(f);
+
+			int hex = 0;
+			char *hexChar = new char[lsize];
+			//non c'e l'ha fa tutto il file
+			for (int x = 0; x < 1000; x++)
+			{
+				hex = lll[x];
+				itoa(hex, hexChar, 16);
+
+				System::String ^checksumstr = gcnew String(hexChar);
+
+				Environment::NewLine;
+				///checksumstr->ToUpper();
+				hexdump += checksumstr->ToUpper();//////checksumstr->ToUpper() + " ";// +=
+
+
+
+			}
+
+			writehex->WriteLine(hexdump);
+			writehex->Close();
+			flnm = flnm->Empty;
+			MessageBox::Show("Successfully saved.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+
+
+		}
+
+
+
+
+
+
+	}
+	else
+	{
+
+
+
+		SaveFileDialog^ savehex = gcnew SaveFileDialog;
+		savehex->Title = "Save Hex Dump as";
+		savehex->Filter = "All files (*. *)|*. *";
+		savehex->InitialDirectory = "C:\\";
+		savehex->FileName = "HexDump.txt";
+
+		if (savehex->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+
+		thefilehexname = savehex->FileName;
+
+		System::IO::StreamWriter^ writehex = gcnew System::IO::StreamWriter(thefilehexname);
+
+		String^ hexdump = "";
+
+
+		msclr::interop::marshal_context context;
+		std::string getdirectory = context.marshal_as<std::string>(flnm);
+
+		FILE* f = fopen(getdirectory.c_str(), "rb"); ///perchè crasha? praticamente devo ricavarmi l'hex dump dell'exe
+		fseek(f, 0, SEEK_END);
+		long lsize = 0;
+
+		lsize = ftell(f);
+		rewind(f);
+		char*lll = new char[lsize];
+		int quantoletto = 0;
+
+		while (quantoletto < lsize)
+		{
+			quantoletto += fread(lll, 1, lsize - quantoletto, f);
+		}
+		fclose(f);
+
+		int hex = 0;
+		char *hexChar = new char[lsize];
+		//non c'e l'ha fa tutto il file
+		for (int x = 0; x < 1000; x++)
+		{
+			hex = lll[x];
+			itoa(hex, hexChar, 16);
+
+			System::String ^checksumstr = gcnew String(hexChar);
+
+			Environment::NewLine;
+			///checksumstr->ToUpper();
+			hexdump += checksumstr->ToUpper();//////checksumstr->ToUpper() + " ";// +=
+
+
+
+		}
+		writehex->WriteLine(hexdump);
+		writehex->Close();
+		MessageBox::Show("Successfully saved.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+
+
+
+
+
+	}
+}
+void clear_line(char *line, int size)
+{
+	int count;
+
+	for (count = 0; count < size; line[count] = ' ', count++);
+}
+
+char * ascii(char *position, int c)
+{
+	/* If the character is NOT printable
+	* replace it with a '.'  */
+	if (!isprint(c)) c = '.';
+
+	sprintf(position, "%c", c);    /* Put the character to the line
+								   * so it can be displayed later */
+
+								   /* Return the position of the next
+								   * ASCII character.   */
+	return(++position);
+}
+
+char * hex(char *position, int c)
+{
+	int offset = 3;
+
+	sprintf(position, "%02X ", (unsigned char)c);
+
+	*(position + offset) = ' ';   /* Remove the '/0' created by 'sprint'  */
+
+	return (position + offset);
+}
+private: System::Void dump1ToolStripMenuItem2_Click(System::Object^  sender, System::EventArgs^  e) {
+
+
+	String^ thefilehexname = "";
+	if (String::IsNullOrEmpty(flnm)) {
+
+
+		//////OpenFileDialog^
+		System::Windows::Forms::DialogResult info = MessageBox::Show("The file is not opened, Do you want to open it?", "KirbiDSM", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+		if (info == System::Windows::Forms::DialogResult::Yes)
+		{
+
+
+			OpenFileDialog^ openfile = gcnew OpenFileDialog;
+			openfile->Title = "Open the file";
+			openfile->Filter = "Executable files (*.exe, *.ax, *.cpl, *.dll, *.drv, *.efi, *.mui, *.ocx, *.scr, *.sys, *.tsp) | *.exe; *.ax; *.cpl; *.dll; *.drv; *.efi; *.mui; *.ocx; *.scr; *.sys; *.tsp;";
+			openfile->InitialDirectory = "C:\\";
+
+			if (openfile->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+			flnm = openfile->FileName;
+			Sleep(3000);
+
+
+			SaveFileDialog^ savehex = gcnew SaveFileDialog;
+			savehex->Title = "Save Hex Dump as";
+			savehex->FileName = "HexDump.txt";
+			savehex->Filter = "All files (*. *)|*. *";
+			savehex->InitialDirectory = "C:\\";
+
+			if (savehex->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+
+			thefilehexname = savehex->FileName;
+
+			System::IO::StreamWriter^ writehex = gcnew System::IO::StreamWriter(thefilehexname);
+
+			String^ hexdump = "";
+			std::stringstream hx;
+
+			msclr::interop::marshal_context context;
+			std::string file = context.marshal_as<std::string>(flnm);
+			int c = ' ';                    /* Character read from the file */
+
+			char * hex_offset;     /* Position of the next character
+								   * in Hex     */
+
+			char * ascii_offset;      /* Position of the next character
+									  * in ASCII.      */
+
+			FILE *ptr;                       /* Pointer to the file.   */
+
+			char line[81];        /* O/P line.      */
+
+								  /* Open the file    */
+			ptr = fopen(file.c_str(), "r");
+
+			char arrayshex[1024] = { 0 };
+
+
+			while (c != EOF)
+			{
+				clear_line(line, sizeof line);
+				hex_offset = line + HEX_OFFSET;
+				ascii_offset = line + ASCII_OFFSET;
+
+				while (ascii_offset < line + ASCII_OFFSET + NUM_CHARS
+					&& (c = fgetc(ptr)) != EOF)
+				{
+					/* Build the hex part of
+					* the line.      */
+					hex_offset = hex(hex_offset, c);
+
+					/* Build the Ascii part of
+					* the line.      */
+					ascii_offset = ascii(ascii_offset, c);
+
+				}
+				//sprintf(arrayshex, "%s\n", line);
+				hx << line << std::endl;
+			}
+			std::string dd = hx.str();
+			String^ gethx = gcnew String(dd.c_str());
+			writehex->WriteLine(gethx);
+			writehex->Close();
+			flnm = "";
+			MessageBox::Show("Successfully saved.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			///richTextBox1->AppendText(gethx + "\n");
+
+
+
+
+		}
+	}
+	else {
+
+		SaveFileDialog^ savehex = gcnew SaveFileDialog;
+		savehex->Title = "Save Hex Dump as";
+		savehex->FileName = "HexDump.txt";
+		savehex->Filter = "All files (*. *)|*. *";
+		savehex->InitialDirectory = "C:\\";
+
+		if (savehex->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+
+		thefilehexname = savehex->FileName;
+
+		System::IO::StreamWriter^ writehex = gcnew System::IO::StreamWriter(thefilehexname);
+
+		String^ hexdump = "";
+		std::stringstream hx;
+
+		msclr::interop::marshal_context context;
+		std::string file = context.marshal_as<std::string>(flnm);
+		int c = ' ';                    /* Character read from the file */
+
+		char * hex_offset;     /* Position of the next character
+							   * in Hex     */
+
+		char * ascii_offset;      /* Position of the next character
+								  * in ASCII.      */
+
+		FILE *ptr;                       /* Pointer to the file.   */
+
+		char line[81];        /* O/P line.      */
+
+							  /* Open the file    */
+		ptr = fopen(file.c_str(), "r");
+
+		char arrayshex[1024] = { 0 };
+
+
+		while (c != EOF)
+		{
+			clear_line(line, sizeof line);
+			hex_offset = line + HEX_OFFSET;
+			ascii_offset = line + ASCII_OFFSET;
+
+			while (ascii_offset < line + ASCII_OFFSET + NUM_CHARS
+				&& (c = fgetc(ptr)) != EOF)
+			{
+				/* Build the hex part of
+				* the line.      */
+				hex_offset = hex(hex_offset, c);
+
+				/* Build the Ascii part of
+				* the line.      */
+				ascii_offset = ascii(ascii_offset, c);
+
+			}
+			//sprintf(arrayshex, "%s\n", line);
+			hx << line << std::endl;
+		}
+		std::string dd = hx.str();
+		String^ gethx = gcnew String(dd.c_str());
+		writehex->WriteLine(gethx);
+		writehex->Close();
+		MessageBox::Show("Successfully saved.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
+
+
+
+}
+
+private: System::Void dump3ToolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	String^ thefilehexname = "";
+	if (String::IsNullOrEmpty(flnm)) {
+
+
+		//////OpenFileDialog^
+		System::Windows::Forms::DialogResult info = MessageBox::Show("The file is not opened, Do you want to open it?", "KirbiDSM", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+		if (info == System::Windows::Forms::DialogResult::Yes)
+		{
+
+
+			OpenFileDialog^ openfile = gcnew OpenFileDialog;
+			openfile->Title = "Open the file";
+			openfile->Filter = "Executable files (*.exe, *.ax, *.cpl, *.dll, *.drv, *.efi, *.mui, *.ocx, *.scr, *.sys, *.tsp) | *.exe; *.ax; *.cpl; *.dll; *.drv; *.efi; *.mui; *.ocx; *.scr; *.sys; *.tsp;";
+			openfile->InitialDirectory = "C:\\";
+
+			if (openfile->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+			flnm = openfile->FileName;
+			Sleep(3000);
+
+
+			SaveFileDialog^ savehex = gcnew SaveFileDialog;
+			savehex->Title = "Save Hex Dump as";
+			savehex->FileName = "HexDump.txt";
+			savehex->Filter = "All files (*. *)|*. *";
+			savehex->InitialDirectory = "C:\\";
+
+			if (savehex->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+
+			thefilehexname = savehex->FileName;
+
+			System::IO::StreamWriter^ writehex = gcnew System::IO::StreamWriter(thefilehexname);
+
+			String^ hexdump = "";
+
+			std::stringstream outhex;
+
+			cli::array<System::Byte>^ bytes = File::ReadAllBytes(flnm);
+			int bytesPerLine = 16;
+
+			int bytesLength = bytes->Length;
+
+			cli::array<wchar_t>^ HexChars = (gcnew String(L"0123456789ABCDEF"))->ToCharArray();
+
+			int firstHexColumn = 8 + 3;
+
+			int firstCharColumn = firstHexColumn + bytesPerLine * 3 + (bytesPerLine - 1) / 8 + 2;
+
+			int lineLength = firstCharColumn + bytesPerLine + Environment::NewLine->Length;
+
+			cli::array<wchar_t>^ line = (gcnew String(' ', lineLength - Environment::NewLine->Length) + Environment::NewLine)->ToCharArray();
+			int expectedLines = (bytesLength + bytesPerLine - 1) / bytesPerLine;
+			StringBuilder^ result = gcnew StringBuilder(expectedLines * lineLength);
+
+			for (int i = 0; i < bytesLength; i += bytesPerLine)
+			{
+				line[0] = HexChars[(i >> 28) & 0xF];
+				line[1] = HexChars[(i >> 24) & 0xF];
+				line[2] = HexChars[(i >> 20) & 0xF];
+				line[3] = HexChars[(i >> 16) & 0xF];
+				line[4] = HexChars[(i >> 12) & 0xF];
+				line[5] = HexChars[(i >> 8) & 0xF];
+				line[6] = HexChars[(i >> 4) & 0xF];
+				line[7] = HexChars[(i >> 0) & 0xF];
+
+				int hexColumn = firstHexColumn;
+				int charColumn = firstCharColumn;
+
+				for (int j = 0; j < bytesPerLine; j++)
+				{
+					if (j > 0 && (j & 7) == 0)
+					{
+						hexColumn++;
+					}
+					if (i + j >= bytesLength)
+					{
+						line[hexColumn] = L' ';
+						line[hexColumn + 1] = L' ';
+						line[charColumn] = L' ';
+					}
+					else
+					{
+						unsigned char b = bytes[i + j];
+						line[hexColumn] = HexChars[(b >> 4) & 0xF];
+						line[hexColumn + 1] = HexChars[b & 0xF];
+						line[charColumn] = (b < 32 ? L'.' : static_cast<wchar_t>(b));
+					}
+					hexColumn += 3;
+					charColumn++;
+				}
+				result->Append(line);
+			}
+			msclr::interop::marshal_context contexto;
+			std::string hxd = contexto.marshal_as<std::string>(result->ToString());
+			outhex << hxd;
+			std::string finehex = outhex.str();
+			String^ finalhexa = gcnew String(finehex.c_str());
+			writehex->WriteLine(finalhexa);
+			writehex->Close();
+			flnm = "";
+			MessageBox::Show("Successfully saved.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+	}
+	else {
+
+
+
+
+
+
+		SaveFileDialog^ savehex = gcnew SaveFileDialog;
+		savehex->Title = "Save Hex Dump as";
+		savehex->FileName = "HexDump.txt";
+		savehex->Filter = "All files (*. *)|*. *";
+		savehex->InitialDirectory = "C:\\";
+
+		if (savehex->ShowDialog() != System::Windows::Forms::DialogResult::OK) { return; }
+
+		thefilehexname = savehex->FileName;
+
+		System::IO::StreamWriter^ writehex = gcnew System::IO::StreamWriter(thefilehexname);
+
+		String^ hexdump = "";
+
+		std::stringstream outhex;
+
+		cli::array<System::Byte>^ bytes = File::ReadAllBytes(flnm);
+		int bytesPerLine = 16;
+
+		int bytesLength = bytes->Length;
+
+		cli::array<wchar_t>^ HexChars = (gcnew String(L"0123456789ABCDEF"))->ToCharArray();
+
+		int firstHexColumn = 8 + 3;
+
+		int firstCharColumn = firstHexColumn + bytesPerLine * 3 + (bytesPerLine - 1) / 8 + 2;
+
+		int lineLength = firstCharColumn + bytesPerLine + Environment::NewLine->Length;
+
+		cli::array<wchar_t>^ line = (gcnew String(' ', lineLength - Environment::NewLine->Length) + Environment::NewLine)->ToCharArray();
+		int expectedLines = (bytesLength + bytesPerLine - 1) / bytesPerLine;
+		StringBuilder^ result = gcnew StringBuilder(expectedLines * lineLength);
+
+		for (int i = 0; i < bytesLength; i += bytesPerLine)
+		{
+			line[0] = HexChars[(i >> 28) & 0xF];
+			line[1] = HexChars[(i >> 24) & 0xF];
+			line[2] = HexChars[(i >> 20) & 0xF];
+			line[3] = HexChars[(i >> 16) & 0xF];
+			line[4] = HexChars[(i >> 12) & 0xF];
+			line[5] = HexChars[(i >> 8) & 0xF];
+			line[6] = HexChars[(i >> 4) & 0xF];
+			line[7] = HexChars[(i >> 0) & 0xF];
+
+			int hexColumn = firstHexColumn;
+			int charColumn = firstCharColumn;
+
+			for (int j = 0; j < bytesPerLine; j++)
+			{
+				if (j > 0 && (j & 7) == 0)
+				{
+					hexColumn++;
+				}
+				if (i + j >= bytesLength)
+				{
+					line[hexColumn] = L' ';
+					line[hexColumn + 1] = L' ';
+					line[charColumn] = L' ';
+				}
+				else
+				{
+					unsigned char b = bytes[i + j];
+					line[hexColumn] = HexChars[(b >> 4) & 0xF];
+					line[hexColumn + 1] = HexChars[b & 0xF];
+					line[charColumn] = (b < 32 ? L'.' : static_cast<wchar_t>(b));
+				}
+				hexColumn += 3;
+				charColumn++;
+			}
+			result->Append(line);
+		}
+		msclr::interop::marshal_context contexto;
+		std::string hxd = contexto.marshal_as<std::string>(result->ToString());
+		outhex << hxd;
+		std::string finehex = outhex.str();
+		String^ finalhexa = gcnew String(finehex.c_str());
+		writehex->WriteLine(finalhexa);
+		writehex->Close();
+		//flnm = "";
+		MessageBox::Show("Successfully saved.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}
 }
 };
 }

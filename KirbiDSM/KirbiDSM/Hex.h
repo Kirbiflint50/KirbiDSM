@@ -64,7 +64,10 @@ namespace KirbiDSM {
 
 		System::String^ filename;
 		System::String^ Hexa;
-		int fnts = 8;
+	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
+	public:
+	private: System::Windows::Forms::ToolStripMenuItem^  copyToolStripMenuItem;
+			 int fnts = 8;
 	protected:
 		/// <summary>
 		/// Pulire le risorse in uso.
@@ -77,6 +80,8 @@ namespace KirbiDSM {
 			}
 		}
 	public: System::Windows::Forms::RichTextBox^  richTextBox1;
+	private: System::ComponentModel::IContainer^  components;
+	public:
 	protected:
 
 	protected:
@@ -85,7 +90,7 @@ namespace KirbiDSM {
 		/// <summary>
 		/// Variabile di progettazione necessaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -94,8 +99,12 @@ namespace KirbiDSM {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Hex::typeid));
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->copyToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// richTextBox1
@@ -110,6 +119,19 @@ namespace KirbiDSM {
 			this->richTextBox1->Text = L"";
 			this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &Hex::richTextBox1_TextChanged);
 			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->copyToolStripMenuItem });
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(103, 26);
+			// 
+			// copyToolStripMenuItem
+			// 
+			this->copyToolStripMenuItem->Name = L"copyToolStripMenuItem";
+			this->copyToolStripMenuItem->Size = System::Drawing::Size(102, 22);
+			this->copyToolStripMenuItem->Text = L"Copy";
+			this->copyToolStripMenuItem->Click += gcnew System::EventHandler(this, &Hex::copyToolStripMenuItem_Click);
+			// 
 			// Hex
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -122,6 +144,7 @@ namespace KirbiDSM {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Hex";
 			this->Load += gcnew System::EventHandler(this, &Hex::Hex_Load);
+			this->contextMenuStrip1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -180,7 +203,7 @@ namespace KirbiDSM {
 			{
 
 				////richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
-				richTextBox1->BackColor = Color::Blue;
+				richTextBox1->BackColor = Color::White;
 
 				//richTextBox1->ForeColor = System::Drawing::Color::Red;
 				/*textBox1->ForeColor = System::Drawing::Color::Black;
@@ -208,7 +231,7 @@ namespace KirbiDSM {
 			}
 			if (data->Contains(dascrivere5))
 			{
-				richTextBox1->ForeColor = System::Drawing::Color::Red;
+				richTextBox1->ForeColor = System::Drawing::Color::Black;
 				
 
 			}
@@ -448,6 +471,7 @@ namespace KirbiDSM {
 			std::string dd = hx.str();
 			String^ gethx = gcnew String(dd.c_str());
 			richTextBox1->AppendText(gethx + "\n");
+			
 
 		///	HexDump((char *)((DWORD)dosHeader + pSecHeader->PointerToRawData), pSecHeader->SizeOfRawData, opHeader.ImageBase + pSecHeader->VirtualAddress);
 			///FILE *fileptr;
@@ -741,7 +765,8 @@ namespace KirbiDSM {
 	private: System::Void richTextBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 
 
-		
+		richTextBox1->SelectionStart = 0;
+		richTextBox1->ScrollToCaret();
 		
 		/*richTextBox1->MaxLength = 10000000000000000;
 		if (richTextBox1->Text->Length == 32)
@@ -750,9 +775,17 @@ namespace KirbiDSM {
 		}*/
 		//////richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, fnts);
 	}
+private: System::Void copyToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	if (richTextBox1->SelectionLength > 0) {
+		Clipboard::Clear();
+
+		String^ selectedtxt = richTextBox1->SelectedText;
+	///	selectedtxt = selectedtxt->Substring(0, 6);
+		///selectedtxt->
+		///String^ firstFivChar = gcnew String(selectedtxt->Take(5)->ToArray());
+		Clipboard::SetDataObject(selectedtxt, false);
+	}
+}
 };
-	
-		
-	
-	
 }

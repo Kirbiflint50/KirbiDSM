@@ -11,6 +11,11 @@
 #include <msclr\marshal.h>
 #include <msclr\marshal_cppstd.h>
 #include <regex> 
+#include <iomanip>
+#include<math.h>
+#include <sstream>
+#include <fstream>
+#include <bitset>
 ///#include "stdafx.h"
 namespace KirbiDSM {
 
@@ -41,6 +46,11 @@ namespace KirbiDSM {
 		System::String^ filedir;
 		System::String^ asmcode;
 		DWORD imagebase;
+	private: System::Windows::Forms::Button^  button3;
+	public:
+	private: System::Windows::Forms::Label^  label7;
+	private: System::Windows::Forms::TextBox^  textBox5;
+			 
 	protected:
 		/// <summary>
 		/// Pulire le risorse in uso.
@@ -99,6 +109,9 @@ namespace KirbiDSM {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -106,7 +119,7 @@ namespace KirbiDSM {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(162, 18);
+			this->label1->Location = System::Drawing::Point(217, 9);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(81, 18);
 			this->label1->TabIndex = 0;
@@ -114,7 +127,7 @@ namespace KirbiDSM {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(3, 58);
+			this->textBox1->Location = System::Drawing::Point(23, 58);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(158, 20);
 			this->textBox1->TabIndex = 1;
@@ -122,7 +135,7 @@ namespace KirbiDSM {
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(264, 58);
+			this->textBox2->Location = System::Drawing::Point(23, 132);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(158, 20);
 			this->textBox2->TabIndex = 2;
@@ -133,7 +146,7 @@ namespace KirbiDSM {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(64, 34);
+			this->label2->Location = System::Drawing::Point(84, 34);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(32, 15);
 			this->label2->TabIndex = 3;
@@ -144,7 +157,7 @@ namespace KirbiDSM {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(322, 34);
+			this->label3->Location = System::Drawing::Point(81, 108);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(39, 15);
 			this->label3->TabIndex = 4;
@@ -155,7 +168,7 @@ namespace KirbiDSM {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(312, 143);
+			this->label4->Location = System::Drawing::Point(370, 282);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(45, 15);
 			this->label4->TabIndex = 8;
@@ -166,7 +179,7 @@ namespace KirbiDSM {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(55, 143);
+			this->label5->Location = System::Drawing::Point(113, 282);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(41, 15);
 			this->label5->TabIndex = 7;
@@ -174,7 +187,7 @@ namespace KirbiDSM {
 			// 
 			// textBox3
 			// 
-			this->textBox3->Location = System::Drawing::Point(254, 167);
+			this->textBox3->Location = System::Drawing::Point(312, 306);
 			this->textBox3->Name = L"textBox3";
 			this->textBox3->ReadOnly = true;
 			this->textBox3->Size = System::Drawing::Size(158, 20);
@@ -182,7 +195,7 @@ namespace KirbiDSM {
 			// 
 			// textBox4
 			// 
-			this->textBox4->Location = System::Drawing::Point(3, 167);
+			this->textBox4->Location = System::Drawing::Point(61, 306);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(158, 20);
 			this->textBox4->TabIndex = 5;
@@ -193,7 +206,7 @@ namespace KirbiDSM {
 			this->label6->AutoSize = true;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(135, 115);
+			this->label6->Location = System::Drawing::Point(193, 254);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(131, 18);
 			this->label6->TabIndex = 9;
@@ -201,7 +214,7 @@ namespace KirbiDSM {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(165, 203);
+			this->button1->Location = System::Drawing::Point(223, 342);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(75, 23);
 			this->button1->TabIndex = 10;
@@ -211,7 +224,7 @@ namespace KirbiDSM {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(165, 232);
+			this->button2->Location = System::Drawing::Point(223, 371);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 11;
@@ -221,7 +234,7 @@ namespace KirbiDSM {
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(160, 57);
+			this->button4->Location = System::Drawing::Point(383, 75);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(98, 23);
 			this->button4->TabIndex = 13;
@@ -231,7 +244,7 @@ namespace KirbiDSM {
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(160, 84);
+			this->button5->Location = System::Drawing::Point(383, 102);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(98, 23);
 			this->button5->TabIndex = 14;
@@ -239,11 +252,43 @@ namespace KirbiDSM {
 			this->button5->UseVisualStyleBackColor = true;
 			this->button5->Click += gcnew System::EventHandler(this, &AddressConverter::button5_Click);
 			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(383, 131);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(98, 23);
+			this->button3->TabIndex = 15;
+			this->button3->Text = L"Convert to Binary";
+			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &AddressConverter::button3_Click);
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(81, 178);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(44, 15);
+			this->label7->TabIndex = 17;
+			this->label7->Text = L"Binary:";
+			// 
+			// textBox5
+			// 
+			this->textBox5->Location = System::Drawing::Point(23, 202);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(158, 20);
+			this->textBox5->TabIndex = 16;
+			this->textBox5->TextChanged += gcnew System::EventHandler(this, &AddressConverter::textBox5_TextChanged);
+			// 
 			// AddressConverter
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(424, 300);
+			this->ClientSize = System::Drawing::Size(517, 403);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->textBox5);
+			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button2);
@@ -258,10 +303,10 @@ namespace KirbiDSM {
 			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->label1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MaximizeBox = false;
-			this->MaximumSize = System::Drawing::Size(440, 339);
-			this->MinimumSize = System::Drawing::Size(440, 339);
+			this->MinimumSize = System::Drawing::Size(533, 442);
 			this->Name = L"AddressConverter";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AddressConverter";
@@ -271,6 +316,7 @@ namespace KirbiDSM {
 
 		}
 		char *TextToHex(char *text) {
+			char *retnhex = "";
 			if (!text) return 0;
 
 			int len = strlen(text);
@@ -283,8 +329,9 @@ namespace KirbiDSM {
 			for (int i = 0; i < len; i++) {
 				sprintf(buffer + 2 * i, "%02x", (unsigned int)text[i]);
 			}
-			String^ hex = gcnew String(buffer);
-			textBox1->Text = hex;
+			retnhex = buffer;
+			return retnhex;
+			
 
 			///return buffer;
 		}
@@ -358,6 +405,7 @@ namespace KirbiDSM {
 		{
 
 			textBox1->Text = "";
+			textBox5->Text = "";
 		}
 
 
@@ -370,15 +418,16 @@ private: System::Void textBox1_TextChanged(System::Object^  sender, System::Even
 	{
 
 		textBox2->Text = "";
+		textBox5->Text = "";
 	}
 
 }
 private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 
 
-	if (textBox1->Text->Length == 0)
+	if (String::IsNullOrEmpty(textBox1->Text) && String::IsNullOrEmpty(textBox5->Text))
 	{
-		textBox1->Text = "Enter an hex text";
+		MessageBox::Show("First enter something to convert!", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
 
 	}
 	else {
@@ -386,35 +435,70 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 
 		if (System::String::IsNullOrEmpty(textBox2->Text))
 		{
+			if (textBox5->Text->Length > 0) {
 
-			String^ hex = textBox1->Text;
-			msclr::interop::marshal_context oMarshalContext;
-			msclr::interop::marshal_context conti;
-			std::string teststring = conti.marshal_as<std::string>(hex);;
-			regex findhex("(?:0[xX])?[0-9a-fA-F]+");
+				msclr::interop::marshal_context bintext;
 
+				std::string data = bintext.marshal_as<std::string>(textBox5->Text);
+				std::regex binright("^(.*0.*0.*1.*)|(.*0.*1.*0.*)|(.*1.*0.*0.*)$");
 
-			if (regex_search(teststring, findhex))
-			{
-
-				const char* hex_str = oMarshalContext.marshal_as<const char*>(hex);
-
-				std::string result_string;
-				unsigned int ch;
-				for (; std::sscanf(hex_str, "%2x", &ch) == 1; hex_str += 2)
+				if (std::regex_search(data, binright))
 				{
-					result_string += ch;
+					std::stringstream sstream(data);
+					std::stringstream outascii;
+					std::string output;
+					while (sstream.good())
+					{
+						std::bitset<8> bits;
+						sstream >> bits;
+						char c = char(bits.to_ulong());
+						output += c;
+					}
+
+					outascii << output;
+					std::string outputinstring = outascii.str();
+					String^ fin = gcnew String(outputinstring.c_str());
+					textBox2->Text = fin;
+					textBox5->Text = "";
+
 				}
-				System::String^ ascii = gcnew String(result_string.c_str());
-				textBox2->Text = ascii;
+				else { MessageBox::Show("Invalid Binary String.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error); }
+				
+
+
+
 			}
-			else {
+			else if (textBox1->Text->Length > 0) {
+				String^ hex = textBox1->Text;
+				msclr::interop::marshal_context oMarshalContext;
+				msclr::interop::marshal_context conti;
+				std::string teststring = conti.marshal_as<std::string>(hex);;
+				regex findhex("(?:0[xX])?[0-9a-fA-F]+");
 
-				textBox1->Text = "Invalid hex value";
+
+				if (regex_search(teststring, findhex))
+				{
+
+					const char* hex_str = oMarshalContext.marshal_as<const char*>(hex);
+
+					std::string result_string;
+					unsigned int ch;
+					for (; std::sscanf(hex_str, "%2x", &ch) == 1; hex_str += 2)
+					{
+						result_string += ch;
+					}
+					System::String^ ascii = gcnew String(result_string.c_str());
+					textBox2->Text = ascii;
+					textBox1->Text = "";
+				}
+				else {
+
+					MessageBox::Show("Invalid Hex String.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+
+				///std::cout << result_string << '\n';
+
 			}
-
-			///std::cout << result_string << '\n';
-
 		}
 	}
 	///else ////if (String::IsNullOrEmpty(textBox1->Text))
@@ -466,19 +550,58 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 }
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	if (textBox2->Text->Length == 0)
+	if (String::IsNullOrEmpty(textBox2->Text) && String::IsNullOrEmpty(textBox5->Text))
 	{
-		textBox2->Text = "Enter an ascii text";
+		MessageBox::Show("First enter something to convert!", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
 
 	}
 	else {
 		if (String::IsNullOrEmpty(textBox1->Text))
 		{
-			String^ ascii = textBox2->Text;
-			msclr::interop::marshal_context context;
-			std::string teststring = context.marshal_as<std::string>(ascii);
-			TextToHex((char*)(void*)Marshal::StringToHGlobalAnsi(ascii));
+			if (textBox5->Text->Length > 0) {
 
+				msclr::interop::marshal_context bintext;
+
+				std::string data = bintext.marshal_as<std::string>(textBox5->Text);
+				std::regex searchbin("^(.*0.*0.*1.*)|(.*0.*1.*0.*)|(.*1.*0.*0.*)$");
+
+				if (std::regex_search(data, searchbin))
+				{
+					std::stringstream sstream(data);
+					std::stringstream outascii;
+					std::string output;
+					while (sstream.good())
+					{
+						std::bitset<8> bits;
+						sstream >> bits;
+						char c = char(bits.to_ulong());
+						output += c;
+					}
+
+					outascii << output;
+					std::string outputinstring = outascii.str();
+
+					String^ fin = gcnew String(outputinstring.c_str());
+					char *hexiwanna = TextToHex((char*)(void*)Marshal::StringToHGlobalAnsi(fin));
+					String^ thehex = gcnew String(hexiwanna);
+					textBox1->Text = thehex;
+					///textBox5->Text = "";
+					textBox5->Text = "";
+				}
+				else { MessageBox::Show("Invalid Binary String.", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error); }
+
+
+
+			}
+			else if (textBox2->Text->Length > 0) {
+				String^ ascii = textBox2->Text;
+				msclr::interop::marshal_context context;
+				std::string teststring = context.marshal_as<std::string>(ascii);
+				char *finalhexachars = TextToHex((char*)(void*)Marshal::StringToHGlobalAnsi(ascii));
+				String^ hex = gcnew String(finalhexachars);
+				textBox1->Text = hex;
+				textBox2->Text = "";
+			}
 
 
 			/*char end[10000000] = { 0 };
@@ -681,6 +804,111 @@ private: System::Void button2_Click(System::Object^  sender, System::EventArgs^ 
 
 	}
 
+}
+const char* hex_char_to_bin(char c)
+{
+			 // TODO handle default / error
+		switch (toupper(c))
+		{
+			 case '0': return "0000";
+			 case '1': return "0001";
+			 case '2': return "0010";
+			 case '3': return "0011";
+			 case '4': return "0100";
+			 case '5': return "0101";
+			 case '6': return "0110";
+			 case '7': return "0111";
+			 case '8': return "1000";
+			 case '9': return "1001";
+			 case 'A': return "1010";
+			 case 'B': return "1011";
+			 case 'C': return "1100";
+			 case 'D': return "1101";
+			 case 'E': return "1110";
+			 case 'F': return "1111";
+		}
+}
+
+std::string hex_str_to_bin_str(const std::string& hex)
+{
+			 
+			 std::string binary;
+			 for (unsigned i = 0; i != hex.length(); ++i)
+				 binary += hex_char_to_bin(hex[i]);
+			 return binary;
+}
+private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+
+
+
+	if (String::IsNullOrEmpty(textBox1->Text) && String::IsNullOrEmpty(textBox2->Text))
+	{
+		MessageBox::Show("First enter something to convert!", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+
+	else
+	{
+
+
+
+
+		if (textBox1->Text->Length > 0)
+		{
+
+			msclr::interop::marshal_context conti;
+			std::string teststring = conti.marshal_as<std::string>(textBox1->Text);
+			std::regex findhex("(?:0[xX])?[0-9a-fA-F]+");
+			if (std::regex_search(teststring, findhex))
+			{
+
+
+				std::string bindata = hex_str_to_bin_str(teststring);
+				System::String^ finalbinary = gcnew String(bindata.c_str());
+				textBox5->Text = finalbinary;
+				textBox1->Text = "";
+
+
+			}
+			else { MessageBox::Show("Invalid Hex String", "KirbiDSM", MessageBoxButtons::OK, MessageBoxIcon::Error); }
+			return;
+
+
+
+
+
+
+		}
+		else if (textBox2->Text->Length > 0)
+		{
+
+
+
+			char *gethexforbin = TextToHex((char*)(void*)Marshal::StringToHGlobalAnsi(textBox2->Text));
+			std::string hex(gethexforbin);
+			std::string thebinary = hex_str_to_bin_str(hex);
+			String^ binmanaged = gcnew String(thebinary.c_str());
+			textBox5->Text = binmanaged;
+			textBox2->Text = "";
+			return;
+
+
+
+
+
+
+
+
+
+		}
+	}
+}
+private: System::Void textBox5_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	if (textBox5->Text->Length > 0)
+	{
+		textBox1->Text = "";
+		textBox2->Text = "";
+	}
 }
 };
 }

@@ -164,7 +164,7 @@ namespace KirbiDSM {
 			{
 
 				////richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
-				richTextBox1->BackColor = Color::Blue;
+				richTextBox1->BackColor = Color::White;
 
 				//richTextBox1->ForeColor = System::Drawing::Color::Red;
 				/*textBox1->ForeColor = System::Drawing::Color::Black;
@@ -192,7 +192,7 @@ namespace KirbiDSM {
 			}
 			if (data->Contains(dascrivere5))
 			{
-				richTextBox1->ForeColor = System::Drawing::Color::Red;
+				richTextBox1->ForeColor = System::Drawing::Color::Black;
 
 
 			}

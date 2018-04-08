@@ -78,7 +78,8 @@ namespace KirbiDSM {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->richTextBox1->Location = System::Drawing::Point(2, 2);
 			this->richTextBox1->Name = L"richTextBox1";
-			this->richTextBox1->Size = System::Drawing::Size(382, 262);
+			this->richTextBox1->ReadOnly = true;
+			this->richTextBox1->Size = System::Drawing::Size(526, 325);
 			this->richTextBox1->TabIndex = 0;
 			this->richTextBox1->Text = L"";
 			this->richTextBox1->TextChanged += gcnew System::EventHandler(this, &Memorymap::richTextBox1_TextChanged);
@@ -87,7 +88,7 @@ namespace KirbiDSM {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(388, 264);
+			this->ClientSize = System::Drawing::Size(532, 327);
 			this->Controls->Add(this->richTextBox1);
 			this->Name = L"Memorymap";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -114,7 +115,7 @@ namespace KirbiDSM {
 			{
 
 				////richTextBox1->Font = gcnew System::Drawing::Font(richTextBox1->Font->FontFamily, 8);
-				richTextBox1->BackColor = Color::Blue;
+				richTextBox1->BackColor = Color::White;
 
 				//richTextBox1->ForeColor = System::Drawing::Color::Red;
 				/*textBox1->ForeColor = System::Drawing::Color::Black;
@@ -142,7 +143,7 @@ namespace KirbiDSM {
 			}
 			if (data->Contains(dascrivere5))
 			{
-				richTextBox1->ForeColor = System::Drawing::Color::Red;
+				richTextBox1->ForeColor = System::Drawing::Color::Black;
 
 
 			}
@@ -250,6 +251,36 @@ namespace KirbiDSM {
 			lpBase = MapViewOfFile(hMap, FILE_MAP_READ, 0, 0, 0);
 			dosHeader = (PIMAGE_DOS_HEADER)lpBase;
 			ntHeader = (PIMAGE_NT_HEADERS)(dosHeader->e_lfanew + (unsigned long)lpBase);
+			char filesize[1024] = { 0 };
+			char datalength[1024] = { 0 };
+			struct stat info;
+			char *filename = exe;
+			if (stat(filename, &info) != 0) {
+				/* error handling */
+			}
+			sprintf(filesize, "FILE SIZE: %lu\n", (unsigned long)info.st_size);
+
+			char *content = (char*)malloc(info.st_size);
+			if (content == NULL) {
+				/* error handling */
+			}
+			FILE *fp = fopen(filename, "rb");
+			if (fp == NULL) {
+				/* error handling */
+			}
+			/* Try to read a single block of info.st_size bytes */
+			size_t blocks_read = fread(content, info.st_size, 1, fp);
+			if (blocks_read != 1) {
+				/* error handling */
+			}
+			fclose(fp);
+
+			/*
+			* If nothing went wrong, content now contains the
+			* data read from the file.
+			*/
+
+			sprintf(datalength, "DATA LENGTH: %lu\n", (unsigned long)info.st_size);
 
 			char mine[1024] = { 0 };
 			char OEP[1024] = { 0 };
@@ -364,12 +395,12 @@ namespace KirbiDSM {
 
 
 
-
+			std::stringstream sectstream;
 
 ///			std::stringstream test;
 
-
-
+			sectstream << "Address                     Raw Size                     Raw Address                     Name" << "\n\n";
+			sectstream << "----------------------------------------------------------------------------------------------------------------------------" << std::endl;
 
 			for (pSecHeader = IMAGE_FIRST_SECTION(ntHeader), i = 0; i < ntHeader->FileHeader.NumberOfSections; i++, pSecHeader++)
 			{
@@ -378,7 +409,9 @@ namespace KirbiDSM {
 				//	sprintf(yno, "\n\nSection Info (%d of %d)", i + 1, ntHeader->FileHeader.NumberOfSections);
 				DWORD vaoepva = (pSecHeader->VirtualAddress) + (pSecHeader->PointerToRawData) - (pSecHeader->VirtualAddress);
 				DWORD RVARAWADD = (pSecHeader->VirtualAddress);
-				strcat(sec, (char*)pSecHeader->Name);
+				//strcat(sec, (char*)pSecHeader->Name);
+				
+				sectstream  << " " << "0x" << std::hex << pSecHeader->VirtualAddress << " ------------------->   " << "0x" << std::hex << pSecHeader->SizeOfRawData << " ------------------->   " << "0x" << std::hex << pSecHeader->PointerToRawData << " ------------------->   "  << (char*)pSecHeader->Name  << std::endl;
 				///test << pSecHeader->Name << std::endl;
 				sprintf(virsize, "\n%-36s%#x", "Size of code or data:", pSecHeader->Misc.VirtualSize);
 				sprintf(viraddress, "\n%-36s%#x", "(RVA)Virtual Address :", pSecHeader->VirtualAddress);
@@ -399,8 +432,7 @@ namespace KirbiDSM {
 				//richTextBox1->Text += othenomi;
 
 			}
-
-
+			
 
 			/*for (int i = 1; i < ntHeader->FileHeader.NumberOfSections; i++)
 			{
@@ -451,7 +483,8 @@ namespace KirbiDSM {
 		////	System::String^ gettitledebuginfo = gcnew String(thetile.c_str());
 		//	System::String^ sysdebug = gcnew String(debaginfos.c_str());
 			///sprintf(timedatestamp, "\n%-36s%s", "Time Stamp :", ntHeader->FileHeader.TimeDateStamp);
-			System::String ^othenomi = gcnew String(sec);
+			std::string bufsectsstream = sectstream.str();
+			System::String ^othenomi = gcnew String(bufsectsstream.c_str());
 			System::String ^execusection = gcnew String(bhj);
 			System::String ^addressv = gcnew String(OEP);
 			System::String ^opiva = gcnew String(oepva);
@@ -500,17 +533,22 @@ namespace KirbiDSM {
 			//System::String ^time = gcnew String(timedatestamp);
 			System::String ^hexsign = gcnew String(sgnhex);
 			System::String ^time = gcnew String(a);
+			System::String ^sizefile = gcnew String(filesize);
+			System::String ^lengthdata = gcnew String(datalength);
 
 
 
 
 
 
-
-			richTextBox1->Text += "Sections name: " + othenomi;
+			richTextBox1->Text += "Sections name: " + "\n" + "\n" + othenomi;
 			richTextBox1->Text += Environment::NewLine;
 			richTextBox1->Text += Environment::NewLine;
-
+			richTextBox1->Text += sizefile;
+			richTextBox1->Text += Environment::NewLine;
+			richTextBox1->Text += lengthdata;
+			richTextBox1->Text += Environment::NewLine;
+			richTextBox1->Text += Environment::NewLine;
 
 			/*if (String::IsNullOrEmpty(execusection))
 			{
